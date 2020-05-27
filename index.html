@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Zero-determinant strategies</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+	processEscapes: true,
+    tags: 'ams',
+    macros: {
+      ssqrt: ['\\sqrt{\\smash[b]{\\mathstrut #1}}', 1],
+      tcdegree: ['\\unicode{xb0}'],
+      tccelsius: ['\\unicode{x2103}'],
+      tcperthousand: ['\\unicode{x2030}'],
+      tcmu: ['\\unicode{x3bc}'],
+      tcohm: ['\\unicode{x3a9}'],
+      bm: ["{\\boldsymbol{#1}}",1]
+    }
+  },
+  chtml: {
+    matchFontHeight: false,
+    displayAlign: "left",
+    displayIndent: "2em"
+  }
+};
+</script>
+<script type="text/javascript" src="article.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h1>観測エラー付き繰り返し囚人のジレンマゲームにおける利得の線形関係を強いる戦略の数理解析</h1>
+<h2>序論</h2>
+<h3>背景</h3>
+
+繰り返しゲームは，相互作用する個体間の長期的関係を探求するための代表的なモデルとして用いられる．繰り返しゲームを研究することによって，利己的個体間でどのように協力や競争が起きるのかを明らかにすることができる．また繰り返しゲームは，経済学，政治学，進化ダイナミクス，マルチエージェントシステムなどを分析するための基本的枠組みも提供できる<a href="#MailathSamuelson2006book"></a>．
+
+
+
+これまでの繰り返し囚人のジレンマゲームの文脈において，2人のプレイヤーの間で，一方のプレイヤーが不当にもう一方のプレイヤーの利得をコントロールしたり，相手よりも常に大きい利得を得るような究極的な戦略はないと思われてきた．しかし，2012年にPressとDysonは，そのような究極的戦略を部分集合として含む<b>ゼロ行列式戦略（Zero-determinant strategy）</b>と呼ばれる戦略を発見した<a href="#Press2012PNAS"></a>．ゼロ行列式戦略とは繰り返し囚人のジレンマゲームにおいて，相手の戦略に関わらず，一方的に自分と相手の利得を直線関係にさせることができる戦略である（ゼロ行列式戦略という名前は，後述するように式\eqref{D_liner_err}の右辺分子の行列式を0にすることに由来する）．さらに，その戦略の一部は相手の利得を一方的に設定したり，相手の戦略に関わらず，相手よりも常に多くの利得を得るようにできる．このゼロ行列式戦略の発見によって，あらゆる社会で必要となる協力行動が促進，維持される仕組みについて，さらなる理解が深まった<a href="#Stewart2012PNAS"></a>, <a href="#Hayes2013AmSci"></a>．
+<h3>研究目的</h3>
+2012年のゼロ行列式戦略の発見以来，その後の研究によって，戦略の性質について多くの事実が明らかとなってきた<a href="#Adami2013NatComm"></a>, <a href="#Akin2017arxiv"></a>, <a href="#ChenZinger2014JTheorBiol"></a>, <a href="#Hilbe2013PlosOne-zd"></a>, <a href="#Hilbe2013PNAS"></a>, <a href="#Hilbe2015GamesEconBehav"></a>, <a href="#Hilbe2015JTheorBiol"></a>, <a href="#Hilbe2014PNAS-zd"></a>, <a href="#LiuLi2015PhysicaA-zd"></a>, <a href="#Stewart2012PNAS"></a>, <a href="#Szolnoki2014PhysRevE-zd"></a>, <a href="#Szolnoki2014SciRep-zd"></a>, <a href="#WuRong2014PhysRevE-zd"></a>, <a href="#Xu2017PhysRevE-zd"></a>, <a href="#Ichinose2018JTB"></a>が，それらの従来の研究では，他のプレイヤーの行動が完全に観測できるという完全観測（perfect monitoring）の仮定が用いられてきた．しかし現実社会では，他のプレイヤーの行動が完全に観測できない場合（不完全観測：imperfect monitoring）があり<a href="#Sekiguchi1997JEconTheor"></a>，このような状況において相手行動を誤認識してしまうエラー（観測エラー：observation error）を考えることは重要である．
+
+Haoらの研究によって，ゼロ行列式戦略に対する観測エラーの影響が明らかとなってきた<a href="#Hao2015PhysRevE"></a>．彼らは，観測エラー付き繰り返し囚人のジレンマゲームでも，ゼロ行列式戦略が存在することを示した．また，ゼロ行列式戦略の部分戦略であるEqualizer戦略{（この戦略と同等の戦略はEqual playとしてPressとDysonの発見よりも先に見つかっている<a href="#Boerlijst1997AmMathMonth"></a>は，観測エラーありでも存在するが，相手の利得のコントロール能力は，エラー率が上がると下がることを明らかにした．さらには，観測エラーが存在する状況では，相手の利得よりも自分の利得が確実に上回るExtortioner戦略（dominant extortion）は存在せず，それより条件が緩いcontingent extortionのみ存在することが分かった．しかし，観測エラーに対する自分と相手の利得を直線関係にする戦略（ゼロ行列式戦略を含む）の一般的性質についてはあまり知られていない．一方で，ゼロ行列式戦略とは別に無条件戦略（unconditional strategy）も自分と相手の利得が線形になることが知られている<a href="#Ichinose2018JTB"></a>, <a href="#Hilbe2013PlosOne-zd"></a>．そこで，本研究では，繰り返し囚人のジレンマゲームにおける利得の線形関係を強いる戦略に観測エラーがどのような影響を与えるかを解析によって明らかにする．
+
+<h2>観測エラー付き囚人のジレンマゲーム</h2>
+<h3>繰り返し囚人のジレンマゲーム</h3>
+繰り返し囚人のジレンマゲームの<b>囚人のジレンマ</b>とは，個人が合理的な行動をしても，全体としては非合理的な結果となるゲームである．このような囚人のジレンマが生じる状況は，現実社会では多く見られる．たとえば，価格競争，軍備拡張競争，環境問題などが囚人のジレンマの例となる．囚人のジレンマゲームを価格競争を例に説明する．同じ商品を売る店A，Bがあり，それぞれの店は利益を得るために商品の値段を下げるか否かの選択肢があるとする．このとき，各店がすべき合理的な選択は値下げをするという選択である．なぜなら，相手の店が値下げをするか否かに関係なく，自分の店が値下げする方がしないよりも利益を得られるためである（表\ref{tbl:ex}）．相手が値下げしない場合，自分が値下げをしなければ，少しの儲けしか得られないが，値下げをすると大儲けすることができる．また，相手が値下げした場合，自分が値下げをしなければ大損になるが，値下げをすれば，少しの損で済むことになる．したがって，各店は値下げをし合い各店ともに少しの損をする結果になってしまう．しかし，全体としては，各店が値下げをし合わない方がより多くの利益を得ることができるので，各店の値下げは結果的に非合理的な結果になってしまう．このように，個人にとって合理的な選択をしても，全体としては非合理的な結果になってしまうということが囚人のジレンマである．
+
+<figure><img src="./image/table1.PNG"><figcaption>価格競争の利得表</figcaption></figure>
+
+囚人のジレンマゲームを1回だけではなく，何度も繰り返したものを<b>繰り返し囚人のジレンマゲーム</b>という．
+ゲームを繰り返し行うことによって，同じ場面に何度も直面するプレイヤー間の長期的な関係を分析する．
+ゲーム1回だと，両者が裏切り合う結果になってしまうが，ゲームを繰り返した場合，
+裏切り合うという結果以外に協力し合うという可能性が出てくる．
+これは，両者が裏切り合ってお互いが消耗し合うよりも，協力し合って利益を確保しようとする考えが生まれるためである．
+現実社会でも親子関係，友人関係，会社の人間関係など同じ人同士の継続的関係の多くでは，相互協力が成立する．
+
+<h3>繰り返し囚人のジレンマゲームでの代表的な戦略</h3>
+繰り返し囚人のジレンマゲームでは以下の戦略がよく知られている．
+ここで考えるプレイヤーの戦略は，記憶1戦略であるとする．
+記憶1戦略とは，前回のゲームの結果のみを見て今回のゲームでの行動を確率的に決める戦略である．
+したがって，記憶1戦略は，${\bm p}=(p_{\rm 1},p_{\rm 2},p_{\rm 3},p_{\rm 4})$で定義される．
+$p_{\rm 1}$は，前回のゲームで自分が協力（C），相手が協力(C)であったとき，今回のゲームで自分が協力する確率である．
+$p_{\rm 2}$は，前回のゲームで自分が協力（C），相手が裏切り(D)であったとき，今回のゲームで自分が協力する確率である．
+$p_{\rm 3}$は，前回のゲームで自分が裏切り（D），相手が協力(C)であったとき，今回のゲームで自分が協力する確率である．
+$p_{\rm 4}$は，前回のゲームで自分が裏切り（D），相手が裏切り(D)であったとき，今回のゲームで自分が協力する確率である．
+\begin{itemize}
+  \item 無条件戦略 $\bm p=(r,r,r,r)$ \mbox{}\\前回のゲームの結果にかかわらず，$r$の確率で協力する戦略である．ここで，$0\leq r\leq 1$である．
+\begin{itemize}
+ \item ALLD戦略$\bm p=(0,0,0,0)$ \mbox{}\\ 常に裏切る戦略である．前回の結果にかかわらず，常に裏切るので，戦略$\bm p$の要素はすべて$0$となる．
+  \item ALLC戦略 $\bm p=(1,1,1,1)$ \mbox{}\\ 常に協力する戦略である．前回の結果にかかわらず，常に協力するので，戦略$\bm p$の要素はすべて$1$となる．
+  \item RAND戦略$\bm p=(1/2,1/2,1/2,1/2)$ \mbox{}\\ 常に$1/2$の確率で協力か裏切りをとる戦略である．
+\end{itemize}
+  \item WSLS戦略（Pavlov戦略） $\bm p=(1,0,0,1)$ \mbox{}\\ Win-Stay,Lose-Shift戦略の略で，「負け{（利得が低い）}」なら行動を切り替え，「勝ち{（利得が高い）}」なら前と同じ行動をする戦略である．
+  \item TFT戦略 $\bm p=(1,0,1,0)$ \mbox{}\\TFTは，tit-for-tatの略で，しっぺ返しを意味する．
+  前回のゲームで，相手が協力すれば，今回のゲームで協力するので，$p_1=p_3=1$となり，相手が裏切りであった場合は，裏切るので，$p_2=p_4=0$になる．
+  \item ゼロ行列式戦略　\mbox{}\\ 2012年にPress-Dyson発見した戦略である．相手の戦略にかかわらず，相手と自分の利得の期待値に直線関係を強いる戦略である．
+  ゼロ行列式戦略は，部分戦略として，以下の戦略を含む．
+  \begin{itemize}
+  \item Equalizer戦略\mbox{}\\ 相手の戦略にかかわらず，相手の利得を固定する戦略
+  \item Extortioner戦略\mbox{}\\ 相手よりも常に多くの利得を得る戦略
+  \end{itemize}
+\end{itemize}
+
+<h3>観測エラー</h3>
+現実では，相手の行動が直接観測できない場合がある．このようなとき，相手が何をやったか全く分からないわけではなく，多くの場合，
+プレイヤーたちの行動を不完全ながら表す何かのシグナルが観測できることが多い．
+例えば，相手の行動に関係するシグナル，「シグナルg (good)」あるいは「シグナルb （bad）」のどちらかが観察されるとする．
+このシグナルには，ノイズがついており，相手が協力（または，裏切り）の場合，g（または，b）が観測されるが，
+周りの環境などの要因により，ある確率で逆のb（または，g）の信号を観測してしまう．
+このように，本来観測するべき信号ではない，逆の信号を観測してしまうことを<b>観測エラー</b>という．
+
+観測エラーをカルテルを例に説明する．
+もし自分がカルテルを破ったとしたら，相手の利益が下がることになる．
+しかし，相手からは自分の行動が見えず，
+相手には利益が下がったというシグナル（つまり，bのシグナル）しか伝わらないので，
+相手は本当にカルテルを破られたかはわからない．
+その利益が下がったというシグナルは，カルテルが破られたという要因（ノイズなしの影響）もあれば，
+カルテルを破らていなくても単に景気が悪くなったという要因（ノイズの影響）もある．
+
+<h2>モデル</h2>
+2人プレイヤー$i\in \{X,Y\}$の繰り返し囚人のジレンマゲームを考える．
+それぞれのプレイヤーは，毎回のゲームで，いずれかの行動\(a_i\in\{C,D\}\)を選択する．Cは協力，Dは裏切りを意味する．
+相手の選択した行動を直接見ることはできないが，相手からの信号\(\omega_i\in\{g,b\}\) を観測することができる．
+gとb はgoodとbadを意味する．これらの信号は，相手の選択した行動だけでなく，ノイズ（エラー）の影響を受ける．
+2人のプレイヤーが選択した行動がそれぞれ\(a_X,a_Y\)のとき，2人のプレイヤーがそれぞれ観測する信号が\(\omega_X,\omega_Y\)である確率は，
+\(\pi(\omega_X,\omega_Y |a_X,a_Y)\)のように表す．
+もし，プレイヤーYがC（または，D）の行動を選択したとして，プレイヤーXがb （または，g）の信号を観測した場合，観測エラーが起きたということになる．
+$\epsilon$を1人のプレイヤーにエラーが起きる確率とし，\(\xi\) を両方のプレイヤーに起きる確率とする．すると，\(1-2\epsilon-\xi\) は，どちらもエラーしない確率となる．
+1回のゲームの利得は，自分の行動と観測した信号によって決まる．実際の利得は，プレイヤー$i$がCの行動を選択し，g の信号を受け取った場合は\(u_i (C,g)=R\)，
+b の信号を受け取った場合は\(u_i (C,b)=S\)とし，プレイヤー$i$がDの行動を選択し，g の信号を観測した場合は\(u_i (D,g)=T\)，b を観測した場合は\(u_i (D,b)=P\)とする（表\ref{payoffMatrix}）．1回のゲームでプレイヤーがそれぞれ\(a_X,a_Y\)の行動をしたときのプレイヤー$i$ の得られる期待利得は，
+\begin{equation}
+ f_i(a_X,a_Y)=\sum_\omega u_i(a_i,\omega_i)\pi(\omega_X,\omega_Y|a_X,a_Y)
+ \label{cond_err}
+\end{equation}
+と表される．$(a_X,a_Y)$が$(C,C)$，$(C,D)$，$(D,C)$，$(D,D)$のときのゲーム1回あたりの期待利得をそれぞれ$R_E,S_E, T_E, P_E$とする．
+式\eqref{cond_err}より，$R_E=(1-\epsilon-\xi)R+(\epsilon+\xi)S$，$S_E=(1-\epsilon-\xi)S+(\epsilon+\xi)R$，$ T_E=(1-\epsilon-\xi)T+(\epsilon+\xi)P$，$ P_E=(1-\epsilon-\xi)P+(\epsilon+\xi)T$のように計算される<a href="#Hao2015PhysRevE"></a>, <a href="#Sekiguchi1997JEconTheor"></a>．
+プレイヤーXのゲームの利得ベクトルは，$\bm {S_X}=(R_E,S_E,T_E,P_E)$，プレイヤーYは，$\bm {S_Y}=(R_E,T_E,S_E,P_E)$で表される．
+
+<figure><img src="./image/table2.PNG"><figcaption>利得表</figcaption></figure>
+
+プレイヤーの戦略は，記憶1戦略とする．記憶1戦略は，前回のゲーム1回の結果のみを見て決める．
+ゲームの結果は，自分がCの行動を選択して，gの信号を観測すればCg，bの信号を観測すればCb，
+自分がDの行動を選択して，gの信号を観測すればDg，bの信号を観測すればDbと書くこととする．
+前回のゲーム結果がCg，Cb，Dg，Db（それぞれ，1，2，3，4と番号を付ける）のとき，プレイヤーXがCの行動を選択する確率をそれぞれ$p_{1}$，$p_{2}$，$p_{3}$，$p_{4}$として，
+プレイヤーXの戦略は，\(\bm p=(p_{1},p_{2},p_{3},p_{4})\)と定義する．
+同様に，前回のゲーム結果がCg，Cb，Dg，Dbのとき，プレイヤーYがCの行動を選択する確率をそれぞれ$q_{1}$，$q_{2}$，$q_{3}$，$q_{4}$として，
+プレイヤーYの戦略は，\(\bm q=(q_{1},q_{2},q_{3},q_{4})\)と定義する．
+
+両プレイヤーの行動の組み合わせ$(a_X,a_Y)$をゲームの状態とする．ノイズは，ゲームの状態の遷移に影響する．
+観測エラーは，状態の遷移確率にしか影響を及ぼさず，実際のゲームの状態には直接影響を及ぼさない．
+例えば，前回のゲームの状態$(a_X,a_Y)$が$(C,C)$のとき，$(C,D)$に遷移する確率は，
+$(1-2\epsilon-\xi) p_1 (1-q_1)+\epsilon p_1 (1-q_2)+\epsilon p_2 (1-q_1)+\xi p_2 (1-q_2)$である．
+このとき，$(1-2\epsilon-\xi) p_1 (1-q_1)$は，両プレイヤーが正しく信号を観測し，今回のゲームでプレイヤーXがCの行動，プレイヤーYがDの行動を選択する確率である．
+$\epsilon p_1 (1-q_2)$と$\epsilon p_2 (1-q_1)$は，一方のプレイヤーに観測エラーが起きた場合，今回のゲームでプレイヤーXがCの行動，プレイヤーYがDの行動を選択する確率である．
+$\xi p_2 (1-q_2)$は，両プレイヤーに観測エラーが起きた場合，前回のゲームでプレイヤーXがCの行動，プレイヤーYがDの行動を選択する確率である．
+このようにして，ゲームの状態$(C,C)$，$(C,D)$，$(D,C)$，$(D,D)$の遷移確率を求めることができる．
+したがって，このゲームの遷移行列$\bm M$は以下のように書ける<a href="#Hao2015PhysRevE"></a>．
+遷移行列$\bm M$の行は順に前回のゲームの状態$(C,C)$，$(C,D)$，$(D,C)$，$(D,D)$を表す．同様に，列は順に次のゲームの状態$(C,C)$，$(C,D)$，$(D,C)$，$(D,D)$を表す．
+例えば，$\bm M$の1行2列は，ゲームの状態が$(C,C)$から$(C,D)$に移る遷移確率となる．
+\begin{equation}
+\label{eq:M}
+\bm M=
+ \left(
+ \begin{array}{ll}
+    \left(
+    \begin{array}{ll}
+      \tau p_1 q_1  \\
+      +\epsilon p_1 q_2 \\
+      +\epsilon p_2 q_1 \\
+      +\xi p_2 q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau p_1 (1-q_1)  \\
+      +\epsilon p_1 (1-q_2) \\
+      +\epsilon p_2 (1-q_1) \\
+      +\xi p_2 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau (1-p_1) q_1  \\
+      +\epsilon (1-p_1) q_2 \\
+      +\epsilon (1-p_2) q_1 \\
+      +\xi (1-p_2) q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau (1-p_1) (1-q_1)  \\
+      +\epsilon (1-p_1) (1-q_2) \\
+      +\epsilon (1-p_2) (1-q_1) \\
+      +\xi (1-p_2) (1-q_2) 
+    \end{array}
+    \right)\\
+  \left(
+    \begin{array}{ll}
+      \epsilon p_1 q_3  \\
+      +\xi p_1 q_4 \\
+      +\tau p_2 q_3 \\
+      +\epsilon p_2 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_1 (1-q_3)  \\
+      +\xi p_1 (1-q_4) \\
+      +\tau p_2 (1-q_3) \\
+      +\epsilon p_2 (1-q_4) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_1) q_3  \\
+      +\xi (1-p_1) q_4 \\
+      +\tau (1-p_2) q_3 \\
+      +\epsilon (1-p_2) q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_1) (1-q_3)  \\
+      +\xi (1-p_1) (1-q_4) \\
+      +\tau (1-p_2) (1-q_3) \\
+      +\epsilon (1-p_2) (1-q_4) 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 q_1  \\
+      +\tau p_3 q_2 \\
+      +\xi p_4 q_1 \\
+      +\epsilon p_4 q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 (1-q_1)  \\
+      +\tau p_3 (1-q_2) \\
+      +\xi p_4 (1-q_1) \\
+      +\epsilon p_4 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_3) q_1  \\
+      +\tau (1-p_3) q_2 \\
+      +\xi (1-p_4) q_1 \\
+      +\epsilon (1-p_4) q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_3) (1-q_1)  \\
+      +\tau (1-p_3) (1-q_2) \\
+      +\xi (1-p_4) (1-q_1) \\
+      +\epsilon (1-p_4) (1-q_2) 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \xi p_3 q_3  \\
+      +\epsilon p_3 q_4 \\
+      +\epsilon p_4 q_3 \\
+      +\tau p_4 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi p_3 (1-q_3)  \\
+      +\epsilon p_3 (1-q_4) \\
+      +\epsilon p_4 (1-q_3) \\
+      +\tau p_4 (1-q_4) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi (1-p_3) q_3  \\
+      +\epsilon (1-p_3) q_4 \\
+      +\epsilon (1-p_4) q_3 \\
+      +\tau (1-p_4) q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi (1-p_3) (1-q_3)  \\
+      +\epsilon (1-p_3) (1-q_4) \\
+      +\epsilon (1-p_4) (1-q_3) \\
+      +\tau (1-p_4) (1-q_4) 
+    \end{array}
+    \right)
+ \end{array}
+  \right)
+\end{equation}
+ここで，$\tau=1-2\epsilon-\xi$である．
+$\bm M$の定常分布$\bm v=(v_1,v_2,v_3,v_4)$は，$\bm {v^T} \bm M=\bm v^T$を満たす．
+$v_1$は，無限回ゲームを繰り返したときの両プレイヤーが相互協力である比率，$v_2$はプレイヤーXが協力，プレイヤーYが裏切りである比率，$v_3$はプレイヤーXが裏切り，プレイヤーYが協力である比率，$v_4$はプレイヤーXが裏切り，プレイヤーYが裏切りである比率を示す．
+さらに，
+$\bm v$と任意のベクトル$\bm f=(f_1,f_2,f_3,f_4)$の内積は，付録\ref{eq:Derivation_D}より，式\eqref{eq:D_err}で表される<a href="#Hao2015PhysRevE"></a>（エラーなしの場合は，PressとDysonの論文の図2Bに示されている<a href="#Press2012PNAS"></a>）}．
+\begin{equation}
+\label{eq:D_err}
+\begin{split}
+  {\bm v} \cdot{\bm f}=
+  & \left|
+    \begin{array}{cccc}
+      \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 & \mu p_{1}+\eta p_{2}-1 & \mu q_{1}+\eta q_{2}-1 & f_1\\
+      \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 & \eta p_{1}+\mu p_{2}-1 & \mu q_{3}+\eta q_{4} & f_2\\
+      \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 & \mu p_{3}+\eta p_{4} &  \eta q_{1}+\mu q_{2}-1 & f_3\\      
+      \xi p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4 & \eta p_{3}+\mu p_{4} & \eta q_{3}+\mu q_{4} & f_4
+    \end{array}
+  \right|\\
+  &\equiv D(\bm p,\bm q,\bm f)
+\end{split}
+\end{equation}
+ここで，$\eta=\epsilon+\xi$，$\mu=1-\epsilon-\xi$である．式\eqref{eq:D_err}を用いて，無限回ゲームを繰り返したときのプレイヤーの利得の期待値を表すことができる．
+無限回ゲームを繰り返したときのプレイヤーXの利得の期待値について，任意のベクトル$\bm f$をプレイヤーXの利得ベクトル$\bm S_X$に置き換えると，$\bm v$と$\bm S_X$の内積は
+\begin{eqnarray}
+  \bm v \cdot \bm S_X&=&R_E v_1+S_E v_2+T_E v_3 +P_E v_4 \nonumber\\
+ &=& \left|
+    \begin{array}{cccc}
+      \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 & \mu p_{1}+\eta p_{2}-1 & \mu q_{1}+\eta q_{2}-1 & R_E\\
+      \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 & \eta p_{1}+\mu p_{2}-1 & \mu q_{3}+\eta q_{4} & S_E\\
+      \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 & \mu p_{3}+\eta p_{4} &  \eta q_{1}+\mu q_{2}-1 & T_E\\      
+      \xi p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4 & \eta p_{3}+\mu p_{4} & \eta q_{3}+\mu q_{4} & P_E
+    \end{array}
+  \right|\nonumber\\
+  &=& D(\bm p,\bm q,\bm S_X)
+\end{eqnarray}
+となる．また，定常分布$\bm v$は標準化されていないので，$\bm v \cdot \bm S_X$を$\bm v \cdot \bm1$で割り，標準化する．
+よって，無限回ゲームを繰り返したときのプレイヤーXの利得の期待値は以下のように書ける．
+\begin{equation}
+\label{eq:sx2}
+s_X=\frac{{\bm v} \cdot {\bm S_X}}{\bm v \cdot \bm1} 
+   =\frac{D({\bm p,\bm q,\bm S_X})}{D({\bm p,\bm q,\bm 1})} 
+\end{equation}
+同様に，プレイヤーYの利得の期待値は以下のように書ける．
+\begin{equation}
+\label{eq:sy2}
+s_Y=\frac{{\bm v} \cdot {\bm S_Y}}{\bm v \cdot \bm1} 
+   =\frac{D({\bm p,\bm q,\bm S_Y})}{D({\bm p,\bm q,\bm 1})} 
+\end{equation}
+さらに，これらを線形結合したものは，$\alpha,\beta,\gamma$を実数とすると，
+\begin{equation}
+\label{D_liner_err}
+\alpha s_X+\beta s_Y+\gamma 
+=\frac{ D({\bm p,\bm q,\alpha \bm{S_X} +\beta \bm{S_Y}+\gamma \bm{1}})}{D({\bm p,\bm q,\bm 1})} 
+\end{equation}
+と書ける．
+式\eqref{D_liner_err}の右辺分子の$D({\bm p,\bm q,\alpha \bm{S_X} +\beta \bm{S_Y}+\gamma \bm{1}})$
+は式\eqref{eq:D2_2}のように表される．
+\begin{equation}
+\label{eq:D2_2}
+\begin{split}
+  & D(\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1)= \\
+  & \left|
+    \begin{array}{cccc}
+      \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 &
+      \mu p_{1}+\eta p_{2}-1 &
+      \mu q_{1}+\eta q_{2}-1 &
+      \alpha R_E +\beta R_E +\gamma \\
+      \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 &
+      \eta p_{1}+\mu p_{2}-1 &
+      \mu q_{3}+\eta q_{4} &
+      \alpha S_E +\beta T_E +\gamma \\
+      \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 &
+      \mu  p_3 +\eta p_4     &
+      \eta q_1 +\mu  q_2 - 1 &
+      \alpha T_E +\beta S_E +\gamma \\      
+      \xi  p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4 &
+      \eta p_3 +\mu p_4 &
+      \eta q_3 +\mu q_4 &
+      \alpha P_E +\beta P_E +\gamma
+    \end{array}
+  \right|
+\end{split}
+\end{equation}
+式\eqref{D_liner_err}を解析することでプレーヤー$X$と$Y$の利得の関係を{明らかにしていく}．
+
+\chapter{解析}
+前章で定義した観測エラー付き繰り返し囚人のジレンマゲームにおいて，
+相手プレイヤーの戦略にかかわらず，自分と相手の利得の期待値の関係を線形にするような戦略をすべて探していく．
+つまり，以下の関係を強いる戦略を探していく．
+\begin{equation}
+\label{linearPayoff}
+\alpha s_X+\beta s_Y+\gamma =0
+\end{equation}
+式\eqref{D_liner_err}の右辺分子の$D(\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1)=0$となれば，式\eqref{D_liner_err}の右辺が$0$となり，式\eqref{linearPayoff}を満たす．したがって，
+以下の行列式の性質を用いて，相手の戦略$\bm q$に関係なく，
+行列式$D(\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1)=0$にさせる戦略${\bm p}$をすべて求めていく．
+<br>
+n次正方行列Aに対して，
+\begin{eqnarray*}
+  det(A)=0 &\Leftrightarrow & Aの列ベクトルは１次従属
+\end{eqnarray*}
+が成り立つ．
+
+上の定理より，式\eqref{eq:D2_2}の行列式の列ベクトルが1次従属であった場合，
+式\eqref{eq:D2_2}の行列式の$i$列目の列ベクトルを$\bm v_i$ $（i \in \{1,2,3,4\}）$とすると，
+以下を満たすような自明でない$s^\prime,t^\prime,u^\prime,v^\prime$が存在する．
+\begin{equation}
+\label{eq:subordination}
+  s^\prime {\bm v_1}+t^\prime {\bm v_2}+ u^\prime {\bm v_3} +v^\prime {\bm v_4}=\bm 0
+\end{equation}
+また，式\eqref{eq:D2_2}の行列式の4列目の列ベクトル${\bm v_4}$を考えずに，1，2，3列目の列ベクトル${\bm v_1},{\bm v_2},{\bm v_3}$のみで1次従属になる場合もあるが，このとき，$\bm v \cdot \bm 1=D(\bm p,\bm q,\bm 1)=0$となり，式\eqref{eq:sx2}，式\eqref{eq:sy2}，式\eqref{D_liner_err}の分母が$0$となり計算不能になるので考えない．
+%また，$\bm v$の要素はそれぞれ$0$以上の数であり，また$\bm v=0$になることはないので，$\bm v \cdot 1=0$となることは考えない．
+よって，$v^\prime\neq0$，$\bm v_4\neq \bm 0$の場合のみを考える．
+$v^\prime\neq0$のとき式\eqref{eq:subordination}について，$s=s^\prime/v^\prime,t=t^\prime/v^\prime,u=u^\prime/v^\prime$とおくと，
+\begin{equation}
+\label{eq:subordination2}
+    s {\bm v_1}+t {\bm v_2}+ u {\bm v_3} + {\bm v_4}=\bm 0
+\end{equation}
+と書ける．したがって，$\bm v_4=\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1 \neq 0$
+と式\eqref{eq:subordination2}を満たす$s,t,u,\alpha,\beta,\gamma$が存在するとき，
+自分と相手の利得の期待値の関係が線形になる．
+<h3>エラーなしの場合</h3>
+<h4>数理解析</h4>
+
+$\epsilon=0$かつ$\xi=0$の場合，利得ベクトルは，$\bm{S_X}=(R_E,S_E,T_E,P_E)=(R,S,T,P)$，
+$\bm{S_Y}=(R_E,T_E,S_E,P_E)=(R,T,S,P)$となる．
+さらに，式\eqref{eq:D2_2}は{整理されて}，以下の式になる（文献<a href="#Press2012PNAS}の図2B"></a>）．
+\begin{equation}
+\label{eq:D}
+  D({\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1}) = 
+  \left|
+    \begin{array}{cccc}
+      p_1 q_1 - 1  & p_1- 1 & q_1 - 1 & \alpha R+\beta R +\gamma \\
+      p_2 q_3      & p_2- 1 & q_3     & \alpha S+\beta T +\gamma \\
+      p_3 q_2      & p_3    & q_2 - 1 & \alpha T+\beta S +\gamma \\      
+      p_4 q_4      & p_4    & q_4     & \alpha P+\beta P +\gamma 
+    \end{array}
+  \right|
+\end{equation}
+式\eqref{eq:D}の行列式の各列ベクトルを式\eqref{eq:subordination2}に代入し，それを成分表示すると以下のようになる．
+
+\begin{equation}
+\label{eq:f_0}
+s
+    \left(
+    \begin{array}{c}
+      p_1 q_1-1 \\
+      p_2 q_3 \\
+      p_3 q_2 \\
+      p_4 q_4
+    \end{array}
+    \right)
+  +t
+  \left(
+    \begin{array}{c}
+      p_1-1 \\
+      p_2-1 \\
+      p_3 \\
+      p_4
+    \end{array}
+    \right)
+    +u
+    \left(
+    \begin{array}{c}
+      q_1-1 \\
+      q_3 \\
+      q_2-1 \\
+     q_4
+    \end{array}
+    \right)
+    +\alpha 
+   \left(
+    \begin{array}{c}
+     R \\
+     S  \\
+     T \\
+     P
+    \end{array}
+    \right)+\beta 
+    \left(
+    \begin{array}{c}
+     R \\
+     T  \\
+     S \\
+     P
+    \end{array}
+    \right)+\gamma 
+    \left(
+    \begin{array}{c}
+     1 \\
+     1  \\
+     1 \\
+     1
+    \end{array}
+    \right)=0
+\end{equation}
+さらに，相手の戦略$\bm q$に関係なく，$D({\bm p},{\bm q},{\alpha \bm{S_X}+\beta \bm{S_Y}+\gamma \bm 1})=0$を成り立たせるような戦略$\bm p$を考えているので，
+$\bm q$に関係なく，式\eqref{eq:f_0}が成り立つ必要がある．
+ゆえに，式\eqref{eq:f_0}を$\bm q$の要素でまとめると，
+\begin{equation}
+\label{eq:vector}
+    \left(
+    \begin{array}{c}
+     (s p_1+u) q_1 \\
+     (s p_2+u) q_3 \\
+     (s p_3+u) q_2 \\
+     (s p_4+u) q_4 
+    \end{array}
+    \right)
+    +t
+    \left(
+    \begin{array}{c}
+      p_1-1 \\
+      p_2-1 \\
+      p_3 \\
+      p_4
+    \end{array}
+    \right)
+    +
+    \left(
+    \begin{array}{c}
+      -u-s\\
+      0\\
+      -u\\
+      0
+    \end{array}
+    \right)
+    +\alpha 
+   \left(
+    \begin{array}{c}
+     R \\
+     S  \\
+     T \\
+     P
+    \end{array}
+    \right)+\beta 
+    \left(
+    \begin{array}{c}
+     R \\
+     T  \\
+     S \\
+     P
+    \end{array}
+    \right)+\gamma 
+    \left(
+    \begin{array}{c}
+     1 \\
+     1  \\
+     1 \\
+     1
+    \end{array}
+    \right)=0
+\end{equation}
+となり，それらの係数が$0$になることが必要である．よって，以下を満たせば，$\bm q$の要素の係数が$0$になる．
+\begin{eqnarray}
+\label{eq:seq1_0}
+  \begin{cases}
+    s p_1+u = 0 & \\
+    s p_2+u = 0 & \\
+    s p_3+u = 0 & \\
+    s p_4+u = 0 &
+  \end{cases}
+  \underset{1,2,3行-4行}{\rightarrow}
+  \begin{cases}
+    s (p_1- p_4) &= 0 \\
+    s (p_2- p_4) &= 0 \\
+    s (p_3- p_4) &= 0 \\
+    s p_4+u &= 0 
+  \end{cases}
+\end{eqnarray}
+式\eqref{eq:seq1_0}を満たすとき，式\eqref{eq:vector}は，第一項が消去され，以下の式になる．
+\begin{equation}
+\label{eq:48}
+t
+    \left(
+    \begin{array}{c}
+      p_1-1 \\
+      p_2-1 \\
+      p_3 \\
+      p_4
+    \end{array}
+    \right)
+    +
+    \left(
+    \begin{array}{c}
+      -u-s\\
+      0\\
+      -u\\
+      0
+    \end{array}
+    \right)
+    +\alpha 
+   \left(
+    \begin{array}{c}
+     R \\
+     S  \\
+     T \\
+     P
+    \end{array}
+    \right)+\beta 
+    \left(
+    \begin{array}{c}
+     R \\
+     T  \\
+     S \\
+     P
+    \end{array}
+    \right)+\gamma 
+    \left(
+    \begin{array}{c}
+     1 \\
+     1  \\
+     1 \\
+     1
+    \end{array}
+    \right)=0
+\end{equation}
+つまり，$\bm q$に関係なく，$D({\bm p},{\bm q},{\alpha \bm{S_X}+\beta \bm{S_Y}+\gamma \bm 1})=0$が成り立つには，
+式\eqref{eq:seq1_0}と式\eqref{eq:48}を同時に満たす$s,t,u,\alpha,\beta,\gamma$が存在する．
+まず，式\eqref{eq:seq1_0}を(1)$s=0$ (2)$s\neq0$と場合分けして解くと，(1)$s=0,u=0$ (2)$s\neq0,p_1=p_2=p_3=p_4=-u/s$が解となる．
+次に，これらが式\eqref{eq:48}を満たすか調べる必要がある．
+<h5>(1)$s=0かつu=0$とき</h5>
+このとき，Press-Dysonが発見したゼロ行列式戦略が解となる．それは以下の通りである．
+$s=u=0$なので，式\eqref{eq:48}より，
+\begin{equation}
+    t \left(
+    \begin{array}{c}
+     p_1 - 1 \\
+     p_2 - 1 \\
+     p_3     \\
+     p_4
+    \end{array}
+    \right)=-
+    \left(
+    \begin{array}{c}
+     \alpha R+\beta R+\gamma \\
+     \alpha S+\beta T+\gamma \\
+     \alpha T+\beta S+\gamma \\
+     \alpha P+\beta P+\gamma
+    \end{array}
+    \right)
+\end{equation}
+両辺を$t(\neq0)$で割り（$t=0$のとき，$\bm v_4 = \alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1=\bm 0$となるので，考える必要はない），$\alpha=-\alpha/t,\beta=-\beta/t,\gamma=-\gamma/t$と置き直すと，
+\begin{equation}
+    \left(
+    \begin{array}{c}
+     p_1 - 1 \\
+     p_2 - 1 \\
+     p_3     \\
+     p_4
+    \end{array}
+    \right)=
+    \left(
+    \begin{array}{c}
+     \alpha R+\beta R+\gamma \\
+     \alpha S+\beta T+\gamma \\
+     \alpha T+\beta S+\gamma \\
+     \alpha P+\beta P+\gamma
+    \end{array}
+    \right)
+\end{equation}
+となり，連立方程式の形で表すと，Press-Dysonの式と同じ{（文献<a href="#Hilbe2013PlosOne-zd"></a>の式(1)や{文献<a href="#Hilbe2013PNAS"></a>の式(1)）}になり，以下のゼロ行列式戦略が導かれる．
+\begin{eqnarray}
+\label{eq:zd}
+  \begin{cases}
+    p_1 - 1 &= \alpha R+\beta R+\gamma \\
+    p_2 - 1 &= \alpha S+\beta T+\gamma \\
+    p_3     &= \alpha T+\beta S+\gamma \\
+    p_4     &= \alpha P+\beta P+\gamma
+  \end{cases}
+\end{eqnarray}
+<h5>(2)$s\neq0かつp_1=p_2=p_3=p_4=-u/s$のとき</h5>
+このとき，無条件戦略 $\bm p=(r,r,r,r)$<a href="#Ichinose2018JTB"></a><a href="#Hilbe2013PlosOne-zd"></a>が導かれる．
+さらに，式\eqref{eq:48}を満たす$s,t,u,\alpha,\beta,\gamma$が存在するか調べる．
+式\eqref{eq:48}に$p_1=p_2=p_3=p_4=r$とおき，$p_1=p_2=p_3=p_4=r$と$u=-s r$を代入すると，
+\begin{equation}
+\label{eq:vector_eqn}
+  \left(
+    \begin{array}{c}
+     \alpha R+\beta R+\gamma \\
+     \alpha S+\beta T+\gamma \\
+     \alpha T+\beta S+\gamma \\
+     \alpha P+\beta P+\gamma
+    \end{array}
+    \right)
+    +s
+    \left(
+    \begin{array}{c}
+      r - 1 \\
+      0 \\
+      r \\
+      0
+    \end{array}
+    \right)
+  +t
+  \left(
+    \begin{array}{c}
+      r - 1 \\
+      r - 1 \\
+      r \\
+      r
+    \end{array}
+    \right)=0
+\end{equation}
+式\eqref{eq:vector_eqn}を連立方程式の形で表すと，
+\begin{eqnarray}
+  \begin{cases}
+    \alpha R+\beta R+\gamma + (s+t)(r-1) &=0\\
+    \alpha S+\beta T+\gamma + t(r-1)     &=0\\
+    \alpha T+\beta S+\gamma + (s+t)r     &=0\\
+    \alpha P+\beta P+\gamma + t r        &=0
+  \end{cases}
+\end{eqnarray}
+となる．これを解くと，
+\begin{eqnarray}
+\label{rrrr_alpha_0}
+	\beta &=& \frac{\alpha ((1-r)(T-P)+ r (R - S ))} { (1 - r)(P -S)+ r (T- R)}\nonumber \\
+	\gamma&=&\frac{\alpha (S - T) ((-1 + r)^2 P + r (1 -r )(T+S)+ r^2 R)} {(1- r)(P-S) + r (T -R)}\nonumber \\
+	s&=&\frac{\alpha (S(-P  - R  + S) + T(P + R  - T))} {(1-r)(P -S)+ r (T - R)}\nonumber \\
+	t&=&\frac{\alpha (S(2 P- S + r (- P - R + S)) +T (- 2 P  + T + r (P + R - T)))} {(1-r)(P -S)+ r (T - R)}
+\end{eqnarray}
+となる．また，式\eqref{rrrr_alpha_0}の$\beta$と$\gamma$の式について，
+$\alpha = \phi s^\prime,\beta=-\phi ,\gamma=\phi(1-s^\prime)l$とおき，$l,s^\prime,\phi$について解くと
+，これは文献<a href="#Hilbe2013PlosOne-zd"></a>の式(16)と一致する．
+\begin{eqnarray}
+	l &=&  (1-r)^2 P+r(1-r)(T+S)+r^2 R\nonumber \\
+	s^\prime &=& -\frac{(1-r)(P-S)+r(T-R)}{(1-r)(T-P)+r(R-S)} \nonumber\\
+	\phi  &=&(1-r)(T-P)+r(R-S)
+\end{eqnarray}
+ここで，式\eqref{rrrr_alpha_0}の$\alpha$は任意の実数である．また，$r=-u/s (r\in[0,1])$であるので，$s$の値が決まれば，$u$は自動的に決まる．
+よって，式\eqref{eq:seq1_0}と式\eqref{eq:48}を満たす$s,t,u,\alpha,\beta,\gamma$が存在するので，無条件戦略は相手の戦略に関係なく自分と相手の利得関係を線形にすることができる<a href="#Ichinose2018JTB"></a> ,<a href="#Hilbe2013PlosOne-zd"></a>．
+
+よって，エラーなしの繰り返し囚人のジレンマゲームにおいて，
+${\bm q}$に関係なく，自分と相手の利得を線形関係にさせる戦略は，ゼロ行列式戦略と無条件戦略のみである．
+このことは先行研究によって明らかになっている<a href="#Ichinose2018JTB"></a>．
+
+<h4>数値例</h4>
+$(T,R,P,S)=(1.5,1,0,-0.5)$とした場合のゼロ行列式戦略と無条件戦略の数値例を示す．
+以下の図は，無限回ゲームを繰り返したときのゲーム1回あたりのプレイヤーの利得の期待値の関係を示したものである．
+灰色の線で囲まれた領域は，このゲームにおいて実現可能な利得集合を示す．
+また，図の黒点の集合は，プレーヤー$X$の戦略$\bm p$を1つに決めた上で，
+{プレーヤー$Y$の}戦略$\bm q$を乱数で1,000戦略分生成し，それぞれについてゲームを行った時の利得関係を示す．
+図\ref{wsls}に示すように，WSLS戦略を例として，一般的な戦略は，プレーヤー$X$と$Y$の利得関係が線形とはならない．一方で，ゼロ行列式戦略と無条件戦略では自分と相手の利得関係は線形となる．これを以下に示す．
+
+
+<h5>ゼロ行列式戦略の$s_X,s_Y$の直線関係の数値例</h5>
+{図\ref{equalizer2}は，プレーヤー$X$の戦略をEqualizer戦略とした場合の数値例である．}Equalizer戦略は，式\eqref{eq:zd}で$\alpha=0$とすれば，
+$s_X$と$s_Y$の関係式は{式}\eqref{linearPayoff}より，$s_Y=-\gamma/\beta$になり相手の利得の期待値を固定できる．
+さらに，式\eqref{eq:zd}で，$\beta=-2/3,\gamma=1/3$とすれば，
+$s_Y=0.5$になり，$s_Y=0.5$とするEqualizer戦略が導かれる．
+このとき，$\bm p=(2/3,1/3,2/3,1/3)$である．図\ref{equalizer2}より，
+$s_Y=0.5$の直線上にすべての黒点があるので，乱数で決めた相手の戦略にかかわらず，相手の利得が一定になっていることがわかる．
+
+{図\ref{extortioner}は，プレーヤー$X$の戦略をExtorioner戦略とした場合の数値例である．}Extorioner戦略は，
+$s_X$と$s_Y$の直線{関係を表す}式\eqref{linearPayoff}が点$(P,P)=(0,0)$を通り，
+直線の傾きを$1$より大きくすることによって，相手よりも多くの利得を得ることができる．式\eqref{eq:zd}より，
+$(\alpha,\beta,\gamma)=(0,0.01,-0.15)$と決めれば，
+$\bm p=(0.86,0.77,0.09,0)$が求まり，点$(0,0)$を通り，直線の傾きを$15$とするようなExtortioner戦略が求まる．
+図\ref{extortioner}より，点$(0,0)$を除いて常に相手よりも利得が高くなっていることがわかる．
+
+{図\ref{tft}の}TFT戦略は{Extortioner戦略の傾きが1の特殊例}である．
+式\eqref{eq:zd}の$\alpha=0.5,\beta=-0.5,\gamma=0$とすれば，$\bm p=(1,0,1,0)$が求まりTFT戦略が導かれる．
+$\alpha=0.5,\beta=-0.5,\gamma=0$のとき，直線は点$(P,P)=(0,0)$，$(R,R)=(1,1)$を通り，傾き$1$となる．
+図\ref{tft}より，TFT戦略を採るプレイヤーは，常に相手の利得と同じになっていることがわかる．
+また，戦略$\bm p$が$p_1=1$かつ$p_4=0$かつ$p_3+p_4=1$を満たす場合，直線が点$(P,P)$，$(R,R)$を通り，傾きが$1$となる戦略となり，TFT戦略と全く同じ直線関係になる（付録\ref{appendix_tft1}）．
+
+%\genki{卒論には入れなくて良いのですが、どこかのジャーナルに論文として出すときには直線で傾き1となる戦略の条件を間宮がこの前解析的に出してくれたので、それをここで言及して、詳しくは付録として付け加えるのはどうですかね。たしか$p_1=1, p_4=0$と決まって、$p_2 +p_3=1$という条件でしたよね。それって添付した論文の付録のAppendix A. TFT as a deterministic generous ZD strategy Followingに書いてあることとすごく関係すると思います。私もまだどう関係するかは理解していませんが。間宮もちょっと見てみてください。}
+
+<h5>無条件戦略$\bm p =(r,r,r,r)$のときの$s_X,s_Y$の直線関係の数値例</h5>
+図\ref{alld}は，無条件戦略の1つのALLD戦略の数値例であり，数理解析でも示したように$s_X$と$s_Y$は直線関係になる．
+このとき，{式}\eqref{rrrr_alpha_0}より$\beta=3 \alpha,\gamma=0$と決まるので，
+$s_X$と$s_Y$の関係式（図\ref{alld}の直線）は，$s_X+3 s_Y=0$となる．
+同様に，{図\ref{allc}は無条件戦略の1つの}ALLC戦略の数値例であり，$s_X$と$s_Y$は直線関係になる．
+このとき，{式}\eqref{rrrr_alpha_0}より$\beta=3  \alpha,\gamma=-4 \alpha$と決まるので，
+$s_X$と$s_Y$の関係式（図\ref{allc}の直線）は，$s_X+3 s_Y-4=0$となる．
+これらの結果から，ALLD戦略を採るプレイヤーは，相手以上の利得を常に得られることがわかる．
+また，ALLC戦略を採るプレイヤーは，常に相手以下の利得になることがわかる．
+
+
+<h3>エラーありの場合</h3>
+<h4>数理解析</h4>
+エラーなしの場合と{同様に}解析していく．
+式\eqref{eq:D2_2}の行列式の各列ベクトルを式\eqref{eq:subordination2}に代入し，それを成分表示すると以下のようになる．
+\begin{equation}
+\label{eq:ff}
+\begin{split}
+   s \left(
+    \begin{array}{c}
+     \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 \\
+     \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 \\
+     \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 \\
+     \xi p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4
+    \end{array}
+    \right)
+    +t
+    \left(
+    \begin{array}{c}
+     \mu p_{1}+\eta p_{2}-1 \\
+     \eta p_{1}+\mu p_{2}-1  \\
+     \mu p_{3}+\eta p_{4} \\
+     \eta p_{3}+\mu p_{4}
+    \end{array}
+    \right)
+    +
+    u
+    \left(
+    \begin{array}{c}
+     \mu q_{1}+\eta q_{2}-1 \\
+     \mu q_{3}+\eta q_{4}  \\
+     \eta q_{1}+\mu q_{2}-1 \\
+     \eta q_{3}+\mu q_{4}
+    \end{array}
+    \right)
+   & \\
+   +\alpha 
+   \left(
+    \begin{array}{c}
+     R_E \\
+     S_E  \\
+     T_E \\
+     P_E
+    \end{array}
+    \right)+\beta 
+    \left(
+    \begin{array}{c}
+     R_E \\
+     T_E  \\
+     S_E \\
+     P_E
+    \end{array}
+    \right)+\gamma 
+    \left(
+    \begin{array}{c}
+     1 \\
+     1  \\
+     1 \\
+     1
+    \end{array}
+    \right)=0&
+\end{split}
+\end{equation}
+さらに，相手の戦略$\bm q$に関係なく，$D({\bm p},{\bm q},{\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1})=0$
+を成り立たせるような戦略${\bm p}$を考えているので，
+$\bm q$に関係なく，式\eqref{eq:ff}が成り立つ必要がある．
+ゆえに，式\eqref{eq:ff}を$\bm q$の要素でまとめると，
+\begin{equation}
+\label{eq:16}
+\begin{split}
+    \left(
+    \begin{array}{c}
+     (s(\tau p_1 +\epsilon p_2 ) +u\mu )q_1+(s(\epsilon p_1 +\xi p_2) +u\eta) q_2 \\
+     (s(\epsilon p_1 +\tau p_2 ) +u\mu )q_3+(s(\xi p_1 +\epsilon p_2) +u\eta )q_4 \\
+     (s(\epsilon p_3+\xi p_4) +u\eta )q_1+(s(\tau p_3+\epsilon p_4)  +u\mu) q_2\\
+     (s(\xi p_3+\epsilon p_4 )+u\eta )q_3+(s(\epsilon p_3+\tau p_4) +u\mu )q_4
+    \end{array}
+    \right)
+    +t 
+    \left(
+    \begin{array}{c}
+     \mu p_{1}+\eta p_{2}-1\\
+     \eta p_{1}+\mu p_{2}-1  \\
+     \mu p_{3}+\eta p_{4} \\
+     \eta p_{3}+\mu p_{4}
+    \end{array}
+    \right) 
+   &\\
+   +
+    \left(
+    \begin{array}{c}
+     -s -u  \\
+     0\\
+     -u\\
+     0
+    \end{array}
+    \right)
+    +\alpha 
+   \left(
+    \begin{array}{c}
+     R_E \\
+     S_E  \\
+     T_E \\
+     P_E
+    \end{array}
+    \right)+\beta 
+    \left(
+    \begin{array}{c}
+     R_E \\
+     T_E  \\
+     S_E \\
+     P_E
+    \end{array}
+    \right)+\gamma 
+    \left(
+    \begin{array}{c}
+     1 \\
+     1  \\
+     1 \\
+     1
+    \end{array}
+    \right)=0&
+\end{split}
+\end{equation}
+となり，それらの係数が$0$になることが必要である．よって，以下を満たせば，$\bm q$の要素の係数が$0$になる．
+\begin{eqnarray}
+\label{eq:seq1}
+  \begin{cases}
+    s(\tau p_1 +\epsilon p_2 ) +u\mu &= 0  \\
+    s(\epsilon p_1 +\xi p_2) +u\eta&= 0  \\
+    s(\epsilon p_1 +\tau p_2 ) +u\mu& = 0  \\
+    s(\xi p_1 +\epsilon p_2) +u\eta &= 0  \\
+    s(\epsilon p_3+\xi p_4) +u\eta&= 0  \\
+    s(\tau p_3+\epsilon p_4)  +u\mu&= 0  \\
+    s(\xi p_3+\epsilon p_4 )+u\eta&= 0  \\
+    s(\epsilon p_3+\tau p_4) +u\mu&= 0 
+  \end{cases}
+\end{eqnarray}
+式\eqref{eq:seq1}を満たすとき，式\eqref{eq:16}は，第一項が消去され，以下の式になる．
+\begin{equation}
+\label{eq:17}
+\begin{split}
+t 
+    \left(
+    \begin{array}{c}
+     \mu p_{1}+\eta p_{2}-1\\
+     \eta p_{1}+\mu p_{2}-1  \\
+     \mu p_{3}+\eta p_{4} \\
+     \eta p_{3}+\mu p_{4}
+    \end{array}
+    \right) 
+   +
+    \left(
+    \begin{array}{c}
+     -s -u  \\
+     0\\
+     -u\\
+     0
+    \end{array}
+    \right)
+    +\alpha 
+   \left(
+    \begin{array}{c}
+     R_E \\
+     S_E  \\
+     T_E \\
+     P_E
+    \end{array}
+    \right)+\beta 
+    \left(
+    \begin{array}{c}
+     R_E \\
+     T_E  \\
+     S_E \\
+     P_E
+    \end{array}
+    \right)+\gamma 
+    \left(
+    \begin{array}{c}
+     1 \\
+     1  \\
+     1 \\
+     1
+    \end{array}
+    \right)=0
+\end{split}
+\end{equation}
+つまり，$\bm q$に関係なく，$D({\bm p},{\bm q},{\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1})=0$が成り立つには，
+式\eqref{eq:seq1}と式\eqref{eq:17}を同時に満たす$s,t,u,\alpha,\beta,\gamma$が存在する．
+
+式\eqref{eq:seq1}を解いていく．
+まず，１行目--３行目，２行目--４行目，５行目--７行目，６行目--８行目をする．
+\begin{eqnarray}
+  \begin{cases}
+    s(\tau p_1 +\epsilon p_2) - s(\epsilon p_1 +\tau p_2) &= 0  \\
+    s(\epsilon p_1 +\xi p_2)  - s(\xi p_1 +\epsilon p_2) &= 0  \\
+    s(\epsilon p_1 +\tau p_2) + u\mu &= 0  \\
+    s(\xi p_1 +\epsilon p_2)  + u\eta &= 0  \\
+    s(\epsilon p_3+\xi p_4)   - s(\xi p_3+\epsilon p_4 )&= 0  \\
+    s(\tau p_3+\epsilon p_4)  - s(\epsilon p_3+\tau p_4)&= 0  \\
+    s(\xi p_3+\epsilon p_4 )  + u\eta&= 0  \\
+    s(\epsilon p_3+\tau p_4)  + u\mu&= 0 
+  \end{cases}
+  \underset{計算する}{\rightarrow}
+  \begin{cases}
+    s(1-3 \epsilon -\xi)(p_1-p_2) &= 0  \\
+    s(\epsilon -\xi)(p_1 - p_2)   &= 0  \\
+    s(\epsilon p_1 +\tau p_2) +u\mu &= 0  \\
+    s(\xi p_1 +\epsilon p_2) +u\eta &= 0  \\
+    s(\epsilon-\xi)(p_3-p_4)&= 0  \\
+    s(1-3 \epsilon -\xi)(p_3-p_4)&= 0  \\
+    s(\xi p_3+\epsilon p_4 )+u\eta&= 0  \\
+    s(\epsilon p_3+\tau p_4) +u\mu&= 0 
+  \end{cases}
+\end{eqnarray}
+行を入れ替え，整理すると，
+\begin{eqnarray}
+\label{eq:seq}
+  \begin{cases}
+    s(\epsilon -\xi)(p_1 - p_2)   &= 0  \\
+    s(\epsilon-\xi)(p_3 - p_4)　&= 0  \\
+    s(1-3 \epsilon -\xi)(p_1-p_2) &= 0  \\
+    s(1-3 \epsilon -\xi)(p_3-p_4)&= 0  \\
+    s(\epsilon p_1 +\tau p_2) +u\mu &= 0  \\
+    s(\xi p_1 +\epsilon p_2) +u\eta &= 0  \\
+    s(\xi p_3+\epsilon p_4 )+u\eta&= 0  \\
+    s(\epsilon p_3+\tau p_4) +u\mu&= 0 
+  \end{cases}
+  \underset{3行+1行,4行+2行}{\rightarrow}
+  \begin{cases}
+    s(\epsilon -\xi)(p_1 - p_2)   &= 0  \\
+    s(\epsilon-\xi)(p_3 - p_4)　&= 0  \\
+    s(1-2 (\epsilon +\xi))(p_1-p_2) &= 0  \\
+    s(1-2 (\epsilon +\xi))(p_3-p_4)&= 0  \\
+    s(\epsilon p_1 +\tau p_2) +u\mu &= 0  \\
+    s(\xi p_1 +\epsilon p_2) +u\eta &= 0  \\
+    s(\xi p_3+\epsilon p_4 )+u\eta&= 0  \\
+    s(\epsilon p_3+\tau p_4) +u\mu&= 0 
+  \end{cases}
+\end{eqnarray}
+これを
+(1)$s=0$
+(2)$\epsilon-\xi=0${かつ}$1-2 (\epsilon +\xi)=0$
+(3)$p_1 =p_2${かつ}$p_3=p_4$
+の3通りに場合分けして解く必要がある．
+
+
+
+
+
+<h5>(1)$s=0$のとき</h5>
+このとき，式\eqref{eq:seq}の連立方程式は，以下の連立方程式に省略される．
+\begin{eqnarray}
+\label{eq:20}
+  \begin{cases}
+    u\eta&= 0  \\
+    u\mu&= 0 
+  \end{cases}
+  \Leftrightarrow
+  \begin{cases}
+    u(\epsilon+\xi)&= 0  \\
+    u(1-\epsilon-\xi)&= 0 
+  \end{cases}
+  \underset{２行+１行}{\rightarrow}
+  \begin{cases}
+    u(\epsilon+\xi)&= 0  \\
+    u&= 0 
+  \end{cases}
+\end{eqnarray}
+よって，式\eqref{eq:20}の連立方程式の解は$u=0$であり，
+式\eqref{eq:seq}の連立方程式の解は，$s=0,u=0$となる．
+$s=0,u=0$を式\eqref{eq:17}に代入すると，
+\begin{equation}
+ t
+    \left(
+    \begin{array}{c}
+     \mu p_{1}+\eta p_{2}-1 \\
+     \eta p_{1}+\mu p_{2}-1  \\
+     \mu p_{3}+\eta p_{4} \\
+     \eta p_{3}+\mu p_{4}
+    \end{array}
+    \right)=
+    -
+  \left(
+    \begin{array}{c}
+     \alpha R_E+\beta R_E+\gamma \\
+     \alpha S_E+\beta T_E+\gamma \\
+     \alpha T_E+\beta S_E+\gamma \\
+     \alpha P_E+\beta P_E+\gamma
+    \end{array}
+    \right)
+\end{equation}
+となる．両辺を$t$($\neq0$)で割り，$\alpha=-\alpha/t,\beta=-\beta/t,\gamma=-\gamma/t$と置きなおす．（$t=0$のとき，$\bm v_4 =\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1=\bm 0$となるので，考える必要はない．）
+\begin{equation}
+    \left(
+    \begin{array}{c}
+     \mu p_{1}+\eta p_{2}-1 \\
+     \eta p_{1}+\mu p_{2}-1  \\
+     \mu p_{3}+\eta p_{4} \\
+     \eta p_{3}+\mu p_{4}
+    \end{array}
+    \right)=
+    \left(
+    \begin{array}{c}
+     \alpha R_E+\beta R_E+\gamma \\
+     \alpha S_E+\beta T_E+\gamma \\
+     \alpha T_E+\beta S_E+\gamma \\
+     \alpha P_E+\beta P_E+\gamma
+    \end{array}
+    \right)
+\end{equation}
+連立方程式の形で表すと，{エラーありの場合の}ゼロ行列式戦略であることがわかる<a href="#Hao2015PhysRevE"></a>．
+\begin{eqnarray}
+\label{eq:hao}
+  \begin{cases}
+    \mu p_{1}+\eta p_{2}-1&= \alpha R_E+\beta R_E+\gamma \\
+    \eta p_{1}+\mu p_{2}-1&= \alpha S_E+\beta T_E+\gamma \\
+    \mu p_{3}+\eta p_{4}   &= \alpha T_E+\beta S_E+\gamma \\
+    \eta p_{3}+\mu p_{4}   &= \alpha P_E+\beta P_E+\gamma \\
+  \end{cases}
+\end{eqnarray}
+
+
+
+
+
+
+
+
+
+
+<h5>(2)$\epsilon-\xi=0$かつ$1-2(\epsilon+\xi)=0 \Leftrightarrow \epsilon=\xi=1/4$のとき</h5>
+$R_E=1/2(R+S),S_E=1/2(R+S), T_E=1/2(T+P), P_E=1/2(T+P)$となり，{$R_E=S_E$，$T_E=P_E$となる．したがって，}繰り返し囚人のジレンマの条件$T_E > R_E > P_E > S_E$の条件を満たさないので考えなくてよい．
+
+<h5>(3)$p_1 -p_2=0$かつ$p_3 -p_4=0$のとき</h5>
+このとき，式\eqref{eq:seq}は以下に省略される．
+\begin{eqnarray}
+  \begin{cases}
+    \mu(s p_1 +u)&= 0  \\
+    \eta(s  p_1 +u) &= 0  \\
+    \eta(s p_3+u)&= 0  \\
+    \mu(s p_3 +u)&= 0 
+  \end{cases}
+  \underset{１行＋２行,３行＋４行}{\longrightarrow}
+  \begin{cases}
+    s p_1 +u &= 0  \\
+    \eta(s  p_1 +u) &= 0  \\
+    \eta(s p_3+u)&= 0  \\
+    s p_3 +u &= 0 
+  \end{cases}
+\end{eqnarray}
+1行目と4行目が成り立てば，2行目と3行目が成り立つので，
+\begin{eqnarray}
+  \begin{cases}
+    s p_1 +u &= 0  \\
+    s p_3 +u &= 0 
+  \end{cases}
+  \underset{１行-２行}{\rightarrow}
+  \begin{cases}
+    s (p_1 - p_3) &= 0  \\
+    s p_3 +u &= 0 
+  \end{cases}
+\end{eqnarray}
+となる．$s=0$以外の解は，$p_1=p_2=p_3=p_4=-u/s$となる．
+次にこの解が式\eqref{eq:17}を満たすか調べる．
+$p_1=p_2=p_3=p_4=-u/s=r $とおき，$u=-s r$を，
+式\eqref{eq:17}に代入すると，
+\begin{equation}
+\label{eq:vector_eqn2}
+    s \left(
+    \begin{array}{c}
+     r-1  \\
+     0\\
+     r\\
+     0
+    \end{array}
+    \right)
+    +t
+    \left(
+    \begin{array}{c}
+     r-1\\
+     r-1  \\
+     r \\
+     r
+    \end{array}
+    \right)+
+    \left(
+    \begin{array}{c}
+     \alpha R_E+\beta R_E+\gamma \\
+     \alpha S_E+\beta T_E+\gamma \\
+     \alpha T_E+\beta S_E+\gamma \\
+     \alpha P_E+\beta P_E+\gamma
+    \end{array}
+    \right)=0
+\end{equation}
+式\eqref{eq:vector_eqn2}連立方程式の形で表すと以下になる．
+\begin{eqnarray}
+  \begin{cases}
+    \alpha R_E+\beta R_E+\gamma +(s+t)(r-1)&= 0  \\
+    \alpha S_E+\beta T_E+\gamma +t(r-1)&= 0  \\
+    \alpha T_E+\beta S_E+\gamma +(s+t)r&= 0  \\
+    \alpha P_E+\beta P_E+\gamma +tr&= 0
+  \end{cases}
+\end{eqnarray}
+これを解くと，
+\begin{eqnarray}
+\label{rrrr_alpha}
+	\beta &=& \frac{\alpha ((1-r)(T_E-P_E)+ r (R_E - S_E ))} { (1 - r)(P_E -S_E)+ r (T_E- R_E)}\nonumber \\
+	\gamma&=&\frac{\alpha (S_E - T_E) ((-1 + r)^2 P_E + r (1 -r )(T_E+S_E)+ r^2 R_E)} {(1- r)(P_E-S_E) + r (T_E -R_E)}\nonumber \\
+	s&=&\frac{\alpha (S_E(-P_E  - R_E  + S_E) + T_E(P_E + R_E  - T_E))} {(1-r)(P_E -S_E)+ r (T_E - R_E)}\\
+	t&=&\frac{\alpha (S_E(2 P_E- S_E + r (- P_E - R_E + S_E)) +T_E (- 2 P_E  + T_E + r (P_E + R_E - T_E)))} {(1-r)(P_E -S_E)+ r (T_E - R_E)} \nonumber 
+\end{eqnarray}
+となる．ここで，$\alpha$は任意の実数である．また，$r=-u/s (r\in [0,1])$であるので，$s$の値が決まれば，$u$は自動的に決まる．
+よって，式\eqref{eq:seq1}と式\eqref{eq:17}を満たす$s,t,u,\alpha,\beta,\gamma$が定まるので，観測エラーがある場合でも無条件戦略は相手の戦略に関係なく自分と相手の利得関係を直線にすることができる．
+
+よって，観測エラー付き繰り返し囚人のジレンマゲームにおいて{もエラーなしの場合と同様に}，相手の戦略$\bm q$に関係なく自分と相手の利得を線形関係にさせる戦略は，ゼロ行列式戦略と無条件戦略だけであることが示された．
+
+<h5>無条件戦略を採るプレイヤーの期待利得$s_X$の変域</h5>
+プレイヤー$X$の戦略が無条件戦略$\bm p=(r,r,r,r)$のとき，$s_X$は，付録\ref{ap1}より以下で与えられる．
+\begin{equation}
+s_X=\frac{ \left|
+    \begin{array}{ccc}
+        \eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2) & r (R_E-T_E) + T_E\\      
+       \eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4)& r (S_E- P_E)+ P_E\\
+    \end{array}
+  \right|} 
+  {\left|
+    \begin{array}{ccc}
+       \eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2)  & 1\\      
+       \eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4)& 1\\
+    \end{array}
+  \right|}
+\end{equation}
+$x=\eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2),y=\eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4)$とおく．
+ここで，$0\leq q_1,q_2,q_3,q_4 \leq 1$なので，$x$と$y$の範囲はそれぞれ$-1\leq x \leq0,0\leq y \leq 1$となる．
+$s_X$を$x,y$を用いて表すと，
+\begin{eqnarray}
+s_X=\frac{ \left|
+    \begin{array}{cc}
+      x & r (R_E-T_E) + T_E\\
+      y & r (S_E- P_E)+ P_E
+    \end{array}
+    \right|} {\left|
+    \begin{array}{cc}
+      x  & 1\\
+      y  & 1
+    \end{array}
+    \right|} 
+    =\frac{x \{ r (S_E- P_E)+ P_E\} -y \{ r (R_E-T_E) + T_E\}}{x - y}
+\end{eqnarray}
+となる．
+$x \neq 0$とし，$k=y/x$とおくと，
+\begin{eqnarray}
+s_X =& \frac{ \{ r (S_E- P_E)+ P_E\} -k \{r (R_E-T_E) + T_E\}}{1 - k}  \\　
+       & \Biggl(\because \frac{ \{ r (S_E- P_E)+ P_E\} -\frac{y}{x} \{ r (R_E-T_E) + T_E \}}{1 - \frac{y}{x}}\Biggl) \nonumber
+\end{eqnarray}
+と書ける．さらに，式を変形すると
+\begin{eqnarray}
+s_X &=&\frac{ \{r (S_E- P_E)+ P_E\} - \{r (R_E-T_E) + T_E\}+(1-k) \{r (R_E-T_E) + T_E\}}{1 - k}  \nonumber \\
+     &=& \{r (R_E-T_E) + T_E\} +\bigl[ \{r (S_E- P_E)+ P_E\} -\{r (R_E-T_E) + T_E\} \bigl]\frac{1}{1 - k}  \nonumber \\
+     &=& \{r (R_E-T_E) + T_E\} + \{r (S_E-R_E)+(1- r) (P_E-T_E)\} \frac{1}{1 - k} 
+\end{eqnarray}
+となる．ここで，$0\leq r \leq1$かつ囚人のジレンマの条件($T_E>R_E>P_E>S_E$)より，$P_E-T_E<0,S_E-R_E<0$であるので，
+$f(k)=1/(1-k)$が最大のとき，$s_X$は最小値になり，$f(k)$が最大のとき$s_X$は最小になる．
+$k$の範囲は，$-\infty < k  \leq 0$ ($\because -1 \leq x < 0 , 0\leq y \leq1$)であるので，$f(k)$の最大値は$f(0)=1$，最小値はない($\lim_{k \to -\infty} f(k) \approx 0$)．
+よって，$x\neq0$のとき，$s_X$の変域は，
+$ r (S_E- P_E)+ P_E \leq s_X < r (R_E-T_E) + T_E$となる．次に，$x=0$のとき，$s_X=r (R_E-T_E) + T_E$となる．以上より，
+$s_X$の変域は
+\begin{equation}
+\label{range}
+  r (S_E- P_E)+ P_E \leq s_X \leq  r (R_E-T_E) + T_E
+\end{equation}
+となる．
+例えば，$(T,R,P,S)=(1.5,1,0,-0.5)$のとき，$R_E=1-1.5 (\epsilon+\xi)$，$S_E=-0.5+1.5(\epsilon+\xi)$，$T_E=1.5(1-\epsilon-\xi)$，
+$P_E=1.5(\epsilon+\xi)$となる．もし自分がALLD戦略（$r=0$）であるとき，自分が取りうる利得の範囲は，式\eqref{range}より，
+$1.5(\epsilon+\xi) \leq s_X \leq  1.5(1-\epsilon-\xi)$となり，エラー率$\epsilon+\xi$が$0,0.1,0.2,0.3$のとき，それぞれ$0 \leq s_X \leq  1.5$，$0.15 \leq s_X \leq  1.35$，$0.3 \leq s_X \leq  1.2$，$0.45 \leq s_X \leq  1.05$となる．
+
+<h3>数値例</h3>
+$(T,R,P,S)=(1.5,1,0,-0.5)$とした場合のゼロ行列式戦略と無条件戦略の数値例を示す．
+以下の図は，エラーなしの場合で示した数値例と同じように，
+無限回ゲームを繰り返したときのゲーム1回あたりのプレイヤーの利得の期待値の関係を示したものである．
+図の黒点の集合は，プレーヤー$X$の戦略$\bm p$を1つに決めた上で，プレーヤー$Y$の戦略$\bm q$を乱数で1,000戦略分生成し，
+それぞれについて，観測エラーなし（エラー率$\epsilon+\xi=0$）の場合で，ゲームを行った時の利得関係を示す．
+さらに，図の青緑点，緑点，薄青緑点の集合は，それぞれエラー率$\epsilon+\xi=0.1,0.2,0.3$とした場合の利得関係を示している．
+また，下図の灰色の線で囲まれた領域は，実現可能な利得集合である．4つの領域が図には書かれているが，外側から順にエラー率$\epsilon+\xi$の値を$0,0.1,0.2,0.3$としたときの領域である．
+%\genki{ここの「$\epsilon+\xi$の値を$0,0.1,0.2,0.3$とした」が分からない。つまり、$\epsilon$は固定で$\xi$だけ動かしたのか、あるいは$\xi$が固定で$\epsilon$だけ動かしたのか。それとも両方同時に動かしたのか。どれなのか明記してください。卒論ではやらなくてよいけど、ジャーナル論文だとその3パターンをやらないといけないでしょうね（うち2パターンは付録とかにつけますが）。}
+ここで，エラー率$\epsilon+\xi \geq 1/3$のとき，囚人のジレンマの条件$T_E>R_E>P_E>S_E$を満たさなくなるので，このような高いエラー率は考えない．
+また，赤点や青点はそれぞれ相手がALLD戦略やALLC戦略であった時の利得関係を示す．
+エラーなしの場合の図\ref{wsls}に示したように，WSLS戦略を例として，一般的な戦略は，プレーヤー$X$と$Y$の利得関係が線形とはならなかった．図\ref{wsls_err}に示したように，エラーがある場合でも，同様にプレーヤー$X$と$Y$の利得関係が線形とはならないことがわかる．
+一方で，ゼロ行列式戦略と無条件戦略では，エラーがある場合でも自分と相手の利得関係は線形となる．これを以下に示す．
+
+<h5>ゼロ行列式戦略の$s_X,s_Y$の直線関係の数値例</h5>
+{図\ref{eq_err}は，プレーヤー$X$の戦略をEqualizer戦略とした場合の数値例である．}Equalizer戦略は，式\eqref{eq:hao}で$\alpha=0$とすれば，
+$s_X$と$s_Y$の関係式は{式}\eqref{linearPayoff}より，$s_Y=-\gamma/\beta$になり相手の利得の期待値を固定できる．
+エラー率$\epsilon+\xi=0$のとき，エラーなしの場合の数値例でも示したように，式\eqref{eq:hao}で，$\beta=-2/3,\gamma=1/3$とすれば，
+$s_Y=0.5$になり，$s_Y=0.5$のEqualizer戦略が導かれた．このとき，$\bm p=(2/3,1/3,2/3,1/3)$であった．
+同様に，エラー率が$0.1,0.2$のときは$\bm p$を，それぞれ$(0.8,0.365217,0.634783,0.2),(0.99,0.74,0.26,0.01)$とすれば，$s_Y=0.5$に相手の利得が固定される．また，エラー率が$0.3$のときは，有効な$\bm p$が求まらない．
+図\ref{eq_err}より，エラーがある場合でも，$s_Y=0.5$の直線上にすべての点集合があるので，乱数で決めた相手の戦略にかかわらず，相手の利得が一定になっていることがわかる．
+
+図\ref{ex_err}は，プレーヤー$X$の戦略をContingent Extorioner戦略とした場合の数値例である．
+Contingent Extortioner戦略は，式\eqref{eq:hao}の$\alpha,\beta,\gamma$を
+それぞれ$\alpha=\phi s ,\beta=-\phi,\gamma=\phi (1-s)l$とおいたとき，
+$l=P_E+\Delta$，$s>1$を満たすように，$l,s$を決める．このとき，$s$は直線の傾きを意味する．
+また，$\phi,\Delta$は$\bm p$のすべての要素が$0$以上$1$以下となるように定める．
+エラー率$\epsilon+\xi=0$のとき，$(s,\phi,\Delta)=(15,0.01,0)$とすれば，$l=P_E$となり,式\eqref{eq:hao}より，$\bm p$は，$\bm p=(0.86, 0.77, 0.09, 0)$となる．図\ref{ex_err}の黒線より，自分の利得は，点$(0,0)$を除いて，相手よりも利得が上回っていることがわかる．
+しかし，エラー率$\epsilon+\xi > 0$のとき，$\Delta=0$としたときの式\eqref{eq:hao}の解が存在しない．
+よって，$\Delta>0$としなければならないので，Contingent Extortioner戦略は相手よりも利得が小さくなる場合ある．
+エラー率$\epsilon+\xi$が0.1，0.2のとき，それぞれ$(s,\phi,\Delta)=(15,0.01,0.1)$，$(s,\phi,\Delta)=(15,0.01,0.2)$
+と決めると，式\eqref{eq:hao}より，
+$\bm p=(0.926875, 0.818125, 0.111875, 0.003125)$，$\bm p=(1,0.86, 0.14, 0)$が導かれる．
+図\ref{ex_err}より，エラーなしの場合は自分の利得を相手以上にすることが可能だが，
+エラーが少しでも入ると相手よりも利得が小さくなる場合があることがわかる．
+
+
+図\ref{tft_err}のTFT戦略は$\bm p=(1,0,1,0)$であり，エラー率$\epsilon+\xi=0$のとき，
+式\eqref{eq:hao}より，$(\alpha,\beta,\gamma)=(0.5,-0.5,0)$となるので，直線の式は，$s_X=s_Y$となる．
+また，エラー率$\epsilon+\xi$を$0.1,0.2,0.3$とすると，それぞれ$(\alpha,\beta,\gamma)$は，
+$(\alpha,\beta,\gamma)=(0.386555,-0.672269,0.142857)$,
+$(\alpha,\beta,\gamma)=(0.0714286,-1.07143,0.5)$,
+$(\alpha,\beta,\gamma)=(-2.36364,-3.63636,3)$となる．
+これにより，直線の式は，それぞれ
+$s_X=0.0217391 (-17 + 80 s_Y)$,
+$s_X=-7+15 s_Y$
+$s_X=0.0384615 (33 - 40 s_Y)$と決まる．
+これらの直線式は，図\ref{tft_err}のそれぞれ直線と一致する．数値例でも示したように，図\ref{tft_err}でエラー率が上がるほど，直線$s_X=s_Y$（黒線）が左に回転してく．
+エラーなしのときは，自分の利得は相手と同じであったが，エラーが入ると相手よりも利得が低くなる可能性や高くなる可能性がでてくる．エラー率が高くなるほど，利得が低くなる度合いや，高くなる度合いが大きくなる．
+また，エラーなしの場合と異なり，TFT戦略は自分と相手の利得関係について，直線関係になるのは特殊利得条件のみで，一般的には成り立たない（付録\ref{appendix_tft2}）．
+
+
+
+<h5>無条件戦略$\bm p =(r,r,r,r)$のときの$s_X,s_Y$の直線関係の数値例</h5>
+図\ref{r0}は，ALLD戦略の数値例であり，数理解析で示したように無条件戦略の1つであるALLD戦略はエラーがある場合でも$s_X$と$s_Y$は，直線関係になる．
+エラーなし($\epsilon=0,\xi=0$)のとき，式\eqref{rrrr_alpha}より，
+$\beta= 3 \alpha ,\gamma=0$と決まるので，$s_X$と$s_Y$の関係式は，$s_X+3 s_Y=0$（図\ref{r0}の黒線）で表される．
+さらに，この直線の$s_X$の変域は，式\eqref{range}より，$0\leq s_X \leq 1.5$となる．
+$\epsilon+\xi$の値を$0.1,0.2,0.3$と増やしていくと，
+図\ref{r0}の黒線はだんだんに右にずれていく（青緑，緑線，薄青緑で表されている）．
+そのとき，それぞれ$s_X$と$s_Y$の関係式は，$s_X+2.4 s_Y-0.51=0 \,(0.15 \leq s_X \leq 1.35)$，$s_X+1.8 s_Y-0.84=0 \, (0.3 \leq s_X \leq 1.2)$，
+$s_X+1.2 s_Y-0.99=0 \,(0.45 \leq s_X \leq 1.05)$となる．
+
+同様に，図\ref{r1}は，ALLC戦略の数値例であり，無条件戦略の1つであるALLC戦略はエラーがある場合でも$s_X$と$s_Y$は，直線関係になる．
+エラーなし($\epsilon=0,\xi=0$)のとき，式\eqref{rrrr_alpha}より，
+$\beta= 3 \alpha ,\gamma=-4 \alpha$と決まるので，$s_X$と$s_Y$の関係式は，$s_X+3 s_Y -4=0$（図\ref{r1}の黒線）となる．
+さらに，この直線の$s_X$の変域は，式\eqref{range}から，$-0.5\leq s_X \leq 1$となる．
+$\epsilon+\xi$の値を$0.1,0.2,0.3$と増やしていくと，
+図\ref{r0}の黒線はだんだんに左にずれていく（青緑，緑線，薄青緑で表されている）．
+そのとき，それぞれ$s_X$と$s_Y$の関係式は，$s_X+2.4 s_Y-2.89=0 \,(-0.35 \leq s_X \leq 0.85)$，$s_X+1.8 s_Y-1.96=0 \, (-0.2 \leq s_X \leq 0.7)$，
+$s_X+1.2 s_Y-1.21=0 \,(-0.05 \leq s_X \leq 0.55)$となる．
+
+これらの結果から，ALLD戦略を採るプレイヤーは，エラーがある場合でも，相手以上の利得を常に得られることがわかる．
+また，ALLC戦略を採るプレイヤーは，エラーがある場合でも，常に相手以下の利得になることがわかる．
+
+
+<h2>結論</h2>
+
+本研究では，観測エラーを含む繰り返し囚人のジレンマゲームにおける2人のプレイヤーの利得の期待値の関係を行列式の形で定式化し，2人のプレイヤーの利得の期待値を線形結合した値がゼロになる，つまり2人の利得が線形の関係になる解（プレイヤー$X$の戦略）を数理解析によって探索した．
+
+観測エラーがない場合の同様の数理解析では，2人のプレイヤーの利得が線形関係になるのはゼロ行列式戦略と無条件戦略のみであることが示されていた．
+数理解析の結果，本研究では，観測エラーを含む場合でも2人のプレイヤーの利得が線形関係になる解が存在することを明らかにし，その解はゼロ行列式戦略と無条件戦略のみであることを示した．また無条件戦略については利得の取り得る範囲についても解析的に明らかにした．これらの結果は数値計算によって正しさが確認された．
+今後は，本研究で明らかになった戦略が，経済学からの繰り返しゲームのアプローチで発見された信念不問均衡とどのような関係にあるかを調べることが重要な研究の方向性である．
+
+<h2>謝辞</h2>
+本研究を進めるにあたり，指導教員の一ノ瀬先生からは多大な助言を賜りました．日頃から丁寧に指導いただき，深く感謝いたします．
+また吉村研究室と一ノ瀬研究室の合同ゼミの皆さまからは，卒論発表用の資料作成にあたり貴重な助言を賜りました．感謝いたします。
+最後に4年間お世話になりました数理システム工学科の皆様に心から感謝申し上げます．
+
+
+<h2>付録</h2>
+<h3>${\bm p}=(r,r,r,r)$のときの$s_X$</h3>
+\label{ap1}
+プレイヤーXが無条件戦略のとき，プレイヤーX の利得の期待値を求める．
+このとき，無条件戦略の$\bm p$は${\bm p} = (r, r, r, r)$なので，式\eqref{eq:D2_2}に代入すると，
+\begin{equation}
+  D({\bm p,\bm q,\bm f}) = 
+  \left|
+    \begin{array}{cccc}
+      \tau  r q_1 +\epsilon r q_2 +\epsilon r q_1+\xi r q_2 -1 & \mu r+\eta r -1 & \mu q_{1}+\eta q_{2}-1 & f_1\\
+      \epsilon r q_3+\xi r q_4+\tau r q_3+\epsilon r q_4 & \eta r +\mu r -1 & \mu q_{3}+\eta q_{4} & f_2\\
+      \epsilon r q_1+\tau r q_2+\xi r q_1+\epsilon r q_2 & \mu r +\eta r &  \eta q_{1}+\mu q_{2}-1 & f_3\\      
+      \xi r q_3+\epsilon r q_4+\epsilon r q_3+\tau r q_4 & \eta r +\mu r & \eta q_{3}+\mu q_{4} & f_4
+    \end{array}
+  \right|
+\end{equation}
+となる．
+$\tau=1-2\epsilon-\xi,\mu=1-\epsilon -\xi,\eta=\epsilon+\xi,\mu+\eta=1$なので，式を整理すると，
+\begin{equation}
+  D({\bm p,\bm q,\bm f}) = 
+  \left|
+    \begin{array}{cccc}
+      r(\mu q_1 +\eta q_2) -1 & r-1 & \mu q_{1}+\eta q_{2}-1 & f_1\\
+      r(\mu q_3 +\eta q_4) & r-1 & \mu q_{3}+\eta q_{4} & f_2\\
+      r(\eta q_1+\mu q_2) & r &  \eta q_{1}+\mu q_{2}-1 & f_3\\      
+      r(\eta q_3+\mu q_4)& r & \eta q_{3}+\mu q_{4} & f_4
+    \end{array}
+  \right|
+\end{equation}
+となる．$1列目-r\times3列目$をすると，
+\begin{equation}
+  D({\bm p,\bm q,\bm f}) = 
+  \left|
+    \begin{array}{cccc}
+      r-1 & r-1 & \mu q_{1}+\eta q_{2}-1 & f_1\\
+      0 & r-1 & \mu q_{3}+\eta q_{4} & f_2\\
+      r & r  &  \eta q_{1}+\mu q_{2}-1 & f_3\\      
+      0 & r  & \eta q_{3}+\mu q_{4} & f_4
+    \end{array}
+  \right|
+\end{equation}
+となる．$2列目-1列目$をすると，
+\begin{equation}
+   D({\bm p,\bm q,\bm f}) = \left|
+    \begin{array}{cccc}
+      r-1 & 0 & \mu q_1  +\eta q_2-1 & f_1\\
+      0 & r-1 & \mu q_3  +\eta q_4   & f_2\\
+      r & 0   & \eta q_1 +\mu q_2-1  & f_3\\      
+      0 & r   & \eta q_3 +\mu q_4    & f_4
+    \end{array}
+  \right|
+\end{equation}
+となる．1行目--3行目，2行目--4行目
+\begin{equation}
+  D({\bm p,\bm q,\bm f}) = \left|
+    \begin{array}{cccc}
+      -1 & 0   & (\mu - \eta) (q_1 - q_2)  & f_1-f_3\\
+      0  & -1  & (\mu - \eta) (q_3 - q_4)  & f_2-f_4\\
+      r  & 0   & \eta q_1 +\mu q_2-1  & f_3\\      
+      0  & r   & \eta q_3 +\mu q_4    & f_4
+    \end{array}
+  \right|
+\end{equation}
+となる．$3行目-r \times 1行目$，$4行目-r \times 2行目$
+\begin{equation}
+   D({\bm p,\bm q,\bm f}) = \left|
+    \begin{array}{cccc}
+      -1 & 0   & (\mu - \eta) (q_1 - q_2)  & f_1-f_3\\
+      0  & -1  & (\mu - \eta) (q_3 - q_4)  & f_2-f_4\\
+      0  & 0   & \eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2) & f_3+r(f_1-f_3)\\      
+      0  & 0   & \eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4) & f_4+r(f_2-f_4)
+    \end{array}
+  \right|
+\end{equation}
+となる．1列目で余因子展開すると，
+\begin{equation}
+  D(\bm p,\bm q,\bm f)=-
+  \left|
+    \begin{array}{ccc}
+      -1  & (\mu - \eta) (q_3 -q_4)  & f_2-f_4\\
+      0   & \eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2) & f_3+r(f_1-f_3)\\      
+      0   & \eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4) & f_4+r(f_2-f_4)
+    \end{array}
+  \right|
+\end{equation}
+となる．さらに，1列目で余因子展開すると，
+\begin{equation}
+  D({\bm p,\bm q,\bm f}) = 
+  \left|
+    \begin{array}{ccc}
+       \eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2) & r (f_1-f_3) + f_3\\      
+       \eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4) & r (f_2- f_4)+ f_4\\
+    \end{array}
+  \right|
+\end{equation}
+となる．
+よって，無条件戦略を採るプレイヤーXの期待利得は，
+\begin{equation}
+\begin{split}
+s_X&=\frac{{\bm v} \cdot {\bm S_X}}{\bm v \cdot \bm 1} =\frac{ D({\bm p,\bm q,\bm S_X})} {D({\bm p,\bm q,\bm 1})} \\
+&=\frac{ \left|
+    \begin{array}{ccc}
+        \eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2) & r (R_E-T_E) + T_E\\      
+       \eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4)& r (S_E- P_E)+ P_E\\
+    \end{array}
+  \right|} 
+  {\left|
+    \begin{array}{ccc}
+       \eta q_1 +\mu q_2-1 +r(\mu - \eta) (q_1 -q_2)  & 1\\      
+       \eta q_3 +\mu q_4   +r(\mu - \eta) (q_3 -q_4)& 1\\
+    \end{array}
+  \right|}
+\end{split}
+\end{equation}
+と書ける．
+
+
+
+<h3>TFT戦略の利得関係</h3>
+TFT戦略はエラーなしの場合，相手の戦略にかかわらず，プレイヤー間の利得関係に点$(P,P),(R,R)$を通り傾き$1$の直線関係を強いる．
+しかし，エラーありの場合では，一般的には利得関係に直線関係を強いることができない．これらのことを以下で示す．
+<h4>エラーなしの場合</h4>
+\label{appendix_tft1}
+TFT戦略がエラーなしの場合，相手の戦略にかかわらず，プレイヤー間の利得関係に点$(P,P),(R,R)$を通り傾き$1$の直線関係を強いる戦略であることを示す．
+
+式\eqref{eq:zd}は，$\alpha,\beta,\gamma$をそれぞれ$\alpha=\phi s ,\beta=-\phi,\gamma=\phi (1-s)l$とおいたとき，以下のように表される\cite{Hilbe2013PlosOne-zd}．
+\begin{eqnarray}
+\label{eq:zd-2}
+  \begin{cases}
+    p_1 - 1 &= -\phi(1-s)(R-l) \\
+    p_2 - 1 &= -\phi(s(l-S)+(T-l)) \\
+    p_3     &= \phi((l-S)+s(T-l)) \\
+    p_4     &= \phi(1-s)(l-P)
+  \end{cases}
+\end{eqnarray}
+ここで，$s$は直線の傾きとなる．直線の傾き$s=1$のとき，式\eqref{eq:zd-2}は，
+\begin{eqnarray}
+\label{eq:zd-s=1}
+  \begin{cases}
+    p_1 - 1 &= 0 \\
+    p_2 - 1 &= -\phi((l-S)+(T-l)) \\
+    p_3     &= \phi((l-S)+(T-l)) \\
+    p_4     &= 0
+  \end{cases}
+\end{eqnarray}
+となる．式\eqref{eq:zd-s=1}より，直線の傾き$1$となる条件は，
+\begin{eqnarray}
+\label{eq:zd-s=1-1}
+  \begin{cases}
+    p_1  &=1 \\
+    p_2 +p_3 &=1  \\
+    p_4     &= 0
+  \end{cases}
+\end{eqnarray}
+である．また，$s=1$のとき，$\alpha=\phi,\beta=-\phi,\gamma=0$となり，$s_X=s_Y$を満たすので，点$(P,P),(R,R)$を通る．
+よって，TFT戦略$\bm p=(1,0,1,0)$は\eqref{eq:zd-s=1-1}を満たすので，プレイヤー間の利得関係に点$(P,P),(R,R)$を通り傾き$1$の直線関係を強いる戦略であることが示された．
+<h4>エラーありの場合</h4>
+\label{appendix_tft2}
+エラーありの場合，TFT戦略が一般的にはプレイヤー間の利得関係に直線関係を強いることはできないことを示す．
+第4章で示したように，観測エラーがある場合で，線形関係を強いる戦略はゼロ行列式戦略と無条件戦略のみである．
+このことから，TFT戦略が線形関係を強いる戦略であるならば，ゼロ行列式戦略，または無条件戦略のどちらか一方に含まれているはずである．
+TFT戦略は$\bm p=(1,0,1,0)$で表されるので，無条件戦略ではないことは自明である．よって，TFT戦略がゼロ行列式戦略に含まれるか調べるのみで良い．
+式\eqref{eq:hao}に，$\bm p =(1,0,1,0)$を代入すると，
+\begin{eqnarray}
+\label{eq:hao_tft}
+  \begin{cases}
+    \mu -1&= \alpha R_E+\beta R_E+\gamma \\
+    \eta -1&= \alpha S_E+\beta T_E+\gamma \\
+    \mu    &= \alpha T_E+\beta S_E+\gamma \\
+    \eta    &= \alpha P_E+\beta P_E+\gamma \\
+  \end{cases}
+\end{eqnarray}
+となる．利得条件やエラー率に関係なく，式\eqref{eq:hao_tft}を満たすような$\alpha,\beta,\gamma$が存在すれば，TFT戦略がゼロ行列式戦略に含まれることが示される．
+式\eqref{eq:hao_tft}を解くために式を変形する．まず，式\eqref{eq:hao_tft}の1行目に4行目を加え，2行目に3行目を加えると，
+\begin{eqnarray}
+  \begin{cases}
+    0&= (\alpha +\beta) (R_E+P_E)+2 \gamma \\
+    0&= (\alpha +\beta) (S_E+T_E)+2 \gamma \\
+    \mu    &= \alpha T_E+\beta S_E+\gamma \\
+    \eta    &= \alpha P_E+\beta P_E+\gamma \\
+  \end{cases}
+\end{eqnarray}
+となる．さらに1行目--2行目をすると，
+\begin{eqnarray}
+  \begin{cases}
+    0&= (\alpha +\beta) \{(R_E+P_E)- (S_E+T_E)\}\\
+    0&= (\alpha +\beta) (S_E+T_E)+2 \gamma \\
+    \mu    &= \alpha T_E+\beta S_E+\gamma \\
+    \eta    &= \alpha P_E+\beta P_E+\gamma \\
+  \end{cases}
+\end{eqnarray}
+となる．1行目の方程式を満たすには，$\alpha+\beta=0$または$(R_E+P_E)- (S_E+T_E)=0$が満たされる必要がある．$(R_E+P_E)- (S_E+T_E)=0$のとき，利得条件が決まってしまい，$\alpha,\beta,\gamma$が存在しても一般的に成り立つとは言えないのでここでは考えない．
+$\alpha+\beta=0$のとき，2行目の方程式を満たすには，$\gamma=0$である必要がある．さらに，4行目の方程式ついて，$\alpha=-\beta,\gamma=0$を代入すると，$\eta=0$となり，$\eta=\epsilon+\xi=0$を満たす必要があることがわかる．
+しかし，これも$\epsilon+\xi=0$のとき，エラー率が決まってしまうので，$\alpha,\beta,\gamma$が存在しても一般的に成り立つとは言えない．よって，TFT戦略が観測エラーがある状況では一般的には線形関係を強いることはできない．
+以下の図\ref{wsls_tft2}は，TFT戦略がプレイヤー間の利得関係に直線関係を強いることができない数値例である．利得を$(T,R,P,S)=(2,1,0,-0.5)$とした場合である．エラーなしの場合は，直線関係（図\ref{wsls_tft2}の黒線）になる．
+しかし，この利得条件では，エラーが入ると直線にはならないことがわかる（図\ref{wsls_tft2}の青緑，緑点集合）．ここで，エラー率$\epsilon+\xi=0.3$のとき，$R_E=0.55,S_E=-0.05,T_E=1.4,P_E=0.6$となり，囚人のジレンマゲームの条件$T_E>R_E>P_E>S_E$の条件を満たさないので，このエラー率については考えない．
+
+<h3>$\bm v\cdot \bm  f=D(\bm p,\bm q,\bm f)$の導出</h3>
+\label{eq:Derivation_D}
+観測エラー付き繰り返し囚人のジレンマゲームの遷移行列は式\eqref{eq:M}と書けた．
+$\bm M^\prime \equiv \bm M-\bm I$とすると，$\bm M^\prime$は以下のように書ける．
+\begin{equation}
+\bm M^\prime=
+ \left(
+ \begin{array}{ll}
+    \left(
+    \begin{array}{ll}
+      \tau p_1 q_1  \\
+      +\epsilon p_1 q_2 \\
+      +\epsilon p_2 q_1 \\
+      +\xi p_2 q_2 -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau p_1 (1-q_1)  \\
+      +\epsilon p_1 (1-q_2) \\
+      +\epsilon p_2 (1-q_1) \\
+      +\xi p_2 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau (1-p_1) q_1  \\
+      +\epsilon (1-p_1) q_2 \\
+      +\epsilon (1-p_2) q_1 \\
+      +\xi (1-p_2) q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau (1-p_1) (1-q_1)  \\
+      +\epsilon (1-p_1) (1-q_2) \\
+      +\epsilon (1-p_2) (1-q_1) \\
+      +\xi (1-p_2) (1-q_2) 
+    \end{array}
+    \right)\\
+  \left(
+    \begin{array}{ll}
+      \epsilon p_1 q_3  \\
+      +\xi p_1 q_4 \\
+      +\tau p_2 q_3 \\
+      +\epsilon p_2 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_1 (1-q_3)  \\
+      +\xi p_1 (1-q_4) \\
+      +\tau p_2 (1-q_3) \\
+      +\epsilon p_2 (1-q_4) -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_1) q_3  \\
+      +\xi (1-p_1) q_4 \\
+      +\tau (1-p_2) q_3 \\
+      +\epsilon (1-p_2) q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_1) (1-q_3)  \\
+      +\xi (1-p_1) (1-q_4) \\
+      +\tau (1-p_2) (1-q_3) \\
+      +\epsilon (1-p_2) (1-q_4) 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 q_1  \\
+      +\tau p_3 q_2 \\
+      +\xi p_4 q_1 \\
+      +\epsilon p_4 q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 (1-q_1)  \\
+      +\tau p_3 (1-q_2) \\
+      +\xi p_4 (1-q_1) \\
+      +\epsilon p_4 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_3) q_1  \\
+      +\tau (1-p_3) q_2 \\
+      +\xi (1-p_4) q_1 \\
+      +\epsilon (1-p_4) q_2 -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_3) (1-q_1)  \\
+      +\tau (1-p_3) (1-q_2) \\
+      +\xi (1-p_4) (1-q_1) \\
+      +\epsilon (1-p_4) (1-q_2) 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \xi p_3 q_3  \\
+      +\epsilon p_3 q_4 \\
+      +\epsilon p_4 q_3 \\
+      +\tau p_4 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi p_3 (1-q_3)  \\
+      +\epsilon p_3 (1-q_4) \\
+      +\epsilon p_4 (1-q_3) \\
+      +\tau p_4 (1-q_4) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi (1-p_3) q_3  \\
+      +\epsilon (1-p_3) q_4 \\
+      +\epsilon (1-p_4) q_3 \\
+      +\tau (1-p_4) q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi (1-p_3) (1-q_3)  \\
+      +\epsilon (1-p_3) (1-q_4) \\
+      +\epsilon (1-p_4) (1-q_3) \\
+      +\tau (1-p_4) (1-q_4) -1
+    \end{array}
+    \right)
+ \end{array}
+  \right)
+\end{equation}
+また，$\bm v^T \bm M=\bm v^T $より，$ \bm v^T \bm M^\prime=0$を満たす．
+さらに，クラメルの公式より，$Adj(\bm M^\prime)\bm M^\prime=det(\bm M^\prime) \bm I=0$を満たす．
+この二つの式より，$Adj(\bm M^\prime)$のすべての行と$\bm v$が平行であることがわかる．
+このことにより，$\bm v$は，$\bm M^\prime$の要素を使って表すことができる．$Adj(\bm M^\prime)$の$i$行$j$列目の成分は以下で表される．
+\begin{equation}
+  Adj(\bm M^\prime)_{ij} = (-1)^{i+j}|\bm M_{ji}^\prime|
+\end{equation}
+ここで，$\bm M_{ji}^\prime$は，行列$\bm M^\prime$から$j$行と$i$列を除いた小行列である．
+$Adj(\bm M^\prime)_{ij} $の4行目は以下のように書ける．これらを用いて$\bm v$を表すことができる．
+\begin{eqnarray}
+  Adj(\bm M^\prime)_{41} &=&(-1)^{4+1}|\bm M_{14}^\prime| \nonumber \\
+  &=&-
+ \left|
+ \begin{array}{ll}
+  \left(
+    \begin{array}{ll}
+      \epsilon p_1 q_3  \\
+      +\xi p_1 q_4 \\
+      +\tau p_2 q_3 \\
+      +\epsilon p_2 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_1 (1-q_3)  \\
+      +\xi p_1 (1-q_4) \\
+      +\tau p_2 (1-q_3) \\
+      +\epsilon p_2 (1-q_4) -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_1) q_3  \\
+      +\xi (1-p_1) q_4 \\
+      +\tau (1-p_2) q_3 \\
+      +\epsilon (1-p_2) q_4 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 q_1  \\
+      +\tau p_3 q_2 \\
+      +\xi p_4 q_1 \\
+      +\epsilon p_4 q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 (1-q_1)  \\
+      +\tau p_3 (1-q_2) \\
+      +\xi p_4 (1-q_1) \\
+      +\epsilon p_4 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_3) q_1  \\
+      +\tau (1-p_3) q_2 \\
+      +\xi (1-p_4) q_1 \\
+      +\epsilon (1-p_4) q_2 -1
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \xi p_3 q_3  \\
+      +\epsilon p_3 q_4 \\
+      +\epsilon p_4 q_3 \\
+      +\tau p_4 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi p_3 (1-q_3)  \\
+      +\epsilon p_3 (1-q_4) \\
+      +\epsilon p_4 (1-q_3) \\
+      +\tau p_4 (1-q_4) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi (1-p_3) q_3  \\
+      +\epsilon (1-p_3) q_4 \\
+      +\epsilon (1-p_4) q_3 \\
+      +\tau (1-p_4) q_4 
+    \end{array}
+    \right)
+ \end{array}
+  \right|
+=v_1
+\end{eqnarray}
+\begin{eqnarray}
+  Adj(\bm M^\prime)_{42} &=& (-1)^{4+2}|\bm M_{24}^\prime|\nonumber \\
+  &=&
+ \left|
+ \begin{array}{ll}
+    \left(
+    \begin{array}{ll}
+      \tau p_1 q_1  \\
+      +\epsilon p_1 q_2 \\
+      +\epsilon p_2 q_1 \\
+      +\xi p_2 q_2 -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau p_1 (1-q_1)  \\
+      +\epsilon p_1 (1-q_2) \\
+      +\epsilon p_2 (1-q_1) \\
+      +\xi p_2 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau (1-p_1) q_1  \\
+      +\epsilon (1-p_1) q_2 \\
+      +\epsilon (1-p_2) q_1 \\
+      +\xi (1-p_2) q_2 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 q_1  \\
+      +\tau p_3 q_2 \\
+      +\xi p_4 q_1 \\
+      +\epsilon p_4 q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 (1-q_1)  \\
+      +\tau p_3 (1-q_2) \\
+      +\xi p_4 (1-q_1) \\
+      +\epsilon p_4 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_3) q_1  \\
+      +\tau (1-p_3) q_2 \\
+      +\xi (1-p_4) q_1 \\
+      +\epsilon (1-p_4) q_2 -1
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \xi p_3 q_3  \\
+      +\epsilon p_3 q_4 \\
+      +\epsilon p_4 q_3 \\
+      +\tau p_4 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi p_3 (1-q_3)  \\
+      +\epsilon p_3 (1-q_4) \\
+      +\epsilon p_4 (1-q_3) \\
+      +\tau p_4 (1-q_4) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi (1-p_3) q_3  \\
+      +\epsilon (1-p_3) q_4 \\
+      +\epsilon (1-p_4) q_3 \\
+      +\tau (1-p_4) q_4 
+    \end{array}
+    \right)
+ \end{array}
+  \right|
+= v_2
+\end{eqnarray}
+\begin{eqnarray}
+  Adj(\bm M^\prime)_{43} &=& (-1)^{4+3}|\bm M_{34}^\prime|\nonumber \\
+  &=&-
+ \left|
+ \begin{array}{ll}
+    \left(
+    \begin{array}{ll}
+      \tau p_1 q_1  \\
+      +\epsilon p_1 q_2 \\
+      +\epsilon p_2 q_1 \\
+      +\xi p_2 q_2 -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau p_1 (1-q_1)  \\
+      +\epsilon p_1 (1-q_2) \\
+      +\epsilon p_2 (1-q_1) \\
+      +\xi p_2 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau (1-p_1) q_1  \\
+      +\epsilon (1-p_1) q_2 \\
+      +\epsilon (1-p_2) q_1 \\
+      +\xi (1-p_2) q_2 
+    \end{array}
+    \right)\\
+  \left(
+    \begin{array}{ll}
+      \epsilon p_1 q_3  \\
+      +\xi p_1 q_4 \\
+      +\tau p_2 q_3 \\
+      +\epsilon p_2 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_1 (1-q_3)  \\
+      +\xi p_1 (1-q_4) \\
+      +\tau p_2 (1-q_3) \\
+      +\epsilon p_2 (1-q_4) -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_1) q_3  \\
+      +\xi (1-p_1) q_4 \\
+      +\tau (1-p_2) q_3 \\
+      +\epsilon (1-p_2) q_4 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \xi p_3 q_3  \\
+      +\epsilon p_3 q_4 \\
+      +\epsilon p_4 q_3 \\
+      +\tau p_4 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi p_3 (1-q_3)  \\
+      +\epsilon p_3 (1-q_4) \\
+      +\epsilon p_4 (1-q_3) \\
+      +\tau p_4 (1-q_4) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \xi (1-p_3) q_3  \\
+      +\epsilon (1-p_3) q_4 \\
+      +\epsilon (1-p_4) q_3 \\
+      +\tau (1-p_4) q_4 
+    \end{array}
+    \right)
+ \end{array}
+  \right|
+= v_3
+\end{eqnarray}
+\begin{eqnarray}
+  Adj(\bm M^\prime)_{44} &=& (-1)^{4+4}|\bm M_{44}^\prime|\nonumber \\
+  &=&
+ \left|
+ \begin{array}{ll}
+    \left(
+    \begin{array}{ll}
+      \tau p_1 q_1  \\
+      +\epsilon p_1 q_2 \\
+      +\epsilon p_2 q_1 \\
+      +\xi p_2 q_2 -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau p_1 (1-q_1)  \\
+      +\epsilon p_1 (1-q_2) \\
+      +\epsilon p_2 (1-q_1) \\
+      +\xi p_2 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \tau (1-p_1) q_1  \\
+      +\epsilon (1-p_1) q_2 \\
+      +\epsilon (1-p_2) q_1 \\
+      +\xi (1-p_2) q_2 
+    \end{array}
+    \right)\\
+  \left(
+    \begin{array}{ll}
+      \epsilon p_1 q_3  \\
+      +\xi p_1 q_4 \\
+      +\tau p_2 q_3 \\
+      +\epsilon p_2 q_4 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_1 (1-q_3)  \\
+      +\xi p_1 (1-q_4) \\
+      +\tau p_2 (1-q_3) \\
+      +\epsilon p_2 (1-q_4) -1
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_1) q_3  \\
+      +\xi (1-p_1) q_4 \\
+      +\tau (1-p_2) q_3 \\
+      +\epsilon (1-p_2) q_4 
+    \end{array}
+    \right)\\
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 q_1  \\
+      +\tau p_3 q_2 \\
+      +\xi p_4 q_1 \\
+      +\epsilon p_4 q_2 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon p_3 (1-q_1)  \\
+      +\tau p_3 (1-q_2) \\
+      +\xi p_4 (1-q_1) \\
+      +\epsilon p_4 (1-q_2) 
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{ll}
+      \epsilon (1-p_3) q_1  \\
+      +\tau (1-p_3) q_2 \\
+      +\xi (1-p_4) q_1 \\
+      +\epsilon (1-p_4) q_2 -1
+    \end{array}
+    \right)
+ \end{array}
+  \right|
+= v_4
+\end{eqnarray}
+さらに，これら4つの行列式は，1行目を2，3行目に加えても行列式の性質により値は変わらないので，それぞれ1行目を2，3行目に加えると以下のようになる．
+\begin{eqnarray}
+ v_1= -\left|
+    \begin{array}{cccc}
+      \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 & \eta p_{1}+\mu p_{2}-1 & \mu q_{3}+\eta q_{4} \\
+      \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 & \mu p_{3}+\eta p_{4} &  \eta q_{1}+\mu q_{2}-1 \\      
+      \xi p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4 & \eta p_{3}+\mu p_{4} & \eta q_{3}+\mu q_{4} 
+    \end{array}
+  \right| 
+\end{eqnarray}
+\begin{eqnarray}
+ v_2= \left|
+    \begin{array}{cccc}
+      \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 & \mu p_{1}+\eta p_{2}-1 & \mu q_{1}+\eta q_{2}-1 \\
+      \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 & \mu p_{3}+\eta p_{4} &  \eta q_{1}+\mu q_{2}-1 \\      
+      \xi p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4 & \eta p_{3}+\mu p_{4} & \eta q_{3}+\mu q_{4} 
+    \end{array}
+  \right| 
+\end{eqnarray}
+\begin{eqnarray}
+ v_3= -\left|
+    \begin{array}{cccc}
+      \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 & \mu p_{1}+\eta p_{2}-1 & \mu q_{1}+\eta q_{2}-1 \\
+      \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 & \eta p_{1}+\mu p_{2}-1 & \mu q_{3}+\eta q_{4} \\
+      \xi p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4 & \eta p_{3}+\mu p_{4} & \eta q_{3}+\mu q_{4} 
+    \end{array}
+  \right| 
+\end{eqnarray}
+\begin{eqnarray}
+ v_4= \left|
+    \begin{array}{cccc}
+      \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 & \mu p_{1}+\eta p_{2}-1 & \mu q_{1}+\eta q_{2}-1 \\
+      \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 & \eta p_{1}+\mu p_{2}-1 & \mu q_{3}+\eta q_{4} \\
+      \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 & \mu p_{3}+\eta p_{4} &  \eta q_{1}+\mu q_{2}-1 
+    \end{array}
+  \right| 
+\end{eqnarray}
+ここで，$\eta=\epsilon+\xi,\mu=1-\epsilon-\xi$である．以上より，$\bm v$と任意のベクトル$\bm f=(f_1,f_2,f_3,f_4)$の内積は，以下のように行列式の形で書ける．
+\begin{eqnarray}
+  \bm v \cdot \bm f&=&v_1 f_1+v_2 f_2+v_3 f_3 +v_4 f_4 \nonumber\\
+ &=& \left|
+    \begin{array}{cccc}
+      \tau p_1 q_1 +\epsilon p_1 q_2 +\epsilon p_2 q_1+\xi p_2 q_2 -1 & \mu p_{1}+\eta p_{2}-1 & \mu q_{1}+\eta q_{2}-1 & f_1\\
+      \epsilon p_1 q_3+\xi p_1 q_4+\tau p_2 q_3+\epsilon p_2 q_4 & \eta p_{1}+\mu p_{2}-1 & \mu q_{3}+\eta q_{4} & f_2\\
+      \epsilon p_3 q_1+\tau p_3 q_2+\xi p_4 q_1+\epsilon p_4 q_2 & \mu p_{3}+\eta p_{4} &  \eta q_{1}+\mu q_{2}-1 & f_3\\      
+      \xi p_3 q_3+\epsilon p_3 q_4+\epsilon p_4 q_3+\tau p_4 q_4 & \eta p_{3}+\mu p_{4} & \eta q_{3}+\mu q_{4} & f_4
+    \end{array}
+  \right| \nonumber\\
+  &\equiv &D(\bm p,\bm q,\bm f)
+\end{eqnarray}
+
+
+
+
+<h2>参考文献</h2>
+<ul class="biblio" data-sort="byKey">
+<li id="MailathSamuelson2006book" data-key="a">J. Mailath and L. Samuelson. Repeated Games and Reputation. Oxford University Press, Oxford, 2006.</li>
+<li id="Press2012PNAS" data-key="b"> W. H. Press and F. J. Dyson. Iterated Prisoner's Dilemma contains strategies that dominate any evolutionary opponent. Proc. Natl. Acad. Sci. USA, Vol. 109, pp. 10409{10413, 2012.}</li>
+<li id="Stewart2012PNAS" data-key="c">A. J. Stewart and J. B. Plotkin. Extortion and cooperation in the Prisoner's Dilemma. Proc. Natl. Acad. Sci. USA, Vol. 109, pp. 10134{10135, 2012.</li>
+<li id="Hayes2013AmSci" data-key="d">B. Hayes. New dilemmas for the prisoner. Am. Sci., Vol. 100, p. 422, 2013.
+<li id="Adami2013NatComm" data-key="e">C. Adami and A. Hintze. Evolutionary instability of zero-determinant strategies demonstrates that winning is not everything. Nat. Comm., Vol. 4, p. 2193, 2013.</li>
+<li id="Akin2017arxiv" data-key="f">E. Akin. The iterated prisoner's dilemma: good strategies and their dynamics. arXiv,2017.</li>
+<li id="ChenZinger2014JTheorBiol" data-key="g">J. Chen and A. Zinger. The robustness of zero-determinant strategies in Iterated Prisoner's Dilemma games. J. Theor. Biol., Vol. 357, pp. 46{54, 2014.</li>
+<li id="Hilbe2013PlosOne-zd" data-key="h">C. Hilbe, M. A. Nowak, and A. Traulsen. Adaptive dynamics of extortion and compliance. PLOS ONE, Vol. 8, p. e77886, 2013.</li>
+<li id="Hilbe2013PNAS" data-key="i">C. Hilbe, M. A. Nowak, and K. Sigmund. Evolution of extortion in Iterated Prisoner's Dilemma games. Proc. Natl. Acad. Sci. USA, Vol. 110, pp. 6913{6918, 2013.</li>
+<li id="Hilbe2015GamesEconBehav" data-key="j">C. Hilbe, A. Traulsen, and K. Sigmund. Partners or rivals? Strategies for the iterated prisoner's dilemma. Games Econ. Behav., Vol. 92, pp. 41{52, 2015.</li>
+<li id="Hilbe2015JTheorBiol" data-key=k">C. Hilbe, B. Wu, A. Traulsen, and M. A. Nowak. Evolutionary performance of zero-determinant strategies in multiplayer games. J. Theor. Biol., Vol. 374, pp. 115{124,2015.</li>
+<li id="Hilbe2014PNAS-zd" data-key="l">C. Hilbe, B. Wu, A. Traulsen, and M. A. Nowak. Cooperation and control in multiplayer social dilemmas. Proc. Natl. Acad. Sci. USA, Vol. 111, pp. 16425{16430,2014.</li>
+<li id="LiuLi2015PhysicaA-zd" data-key="m">J. Liu, Y. Li, C. Xu, and P. M. Hui. Evolutionary behavior of generalized zero-determinant strategies in iterated prisoner's dilemma. Physica A, Vol. 430, pp. 81{92,2015. 24}</li>
+<li id="Szolnoki2014PhysRevE-zd" data-key="n">A. Szolnoki and M. Perc. Evolution of extortion in structured ppulations. Phys.Rev. E, Vol. 89, No. 2, p. 022804, 2014.</li>
+<li id="Szolnoki2014SciRep-zd" data-key="o">A. Szolnoki and M. Perc. Defection and extortion as unexpected catalysts of uncon-ditional cooperation in structured populations. Sci. Rep., Vol. 4, p. 5496, 2014.</li>
+<li id="WuRong2014PhysRevE-zd" data-key="p">Z. X. Wu and Z. Rong. Boosting cooperation by involving extortion in spatial prisoner's dilemma games. Phys. Rev. E, Vol. 90, p. 062102, 2014.</li>
+<li id="Xu2017PhysRevE-zd" data-key="q">X. Xu, Z. Rong, Z. X. Wu, T. Zhou, and C. K. Tse. Extortion provides alternativeroutes to the evolution of cooperation in structured populations. Phys. Rev. E, Vol. 95,p. 052302, 2017.</li>
+<li id="Ichinose2018JTB" data-key="r">G. Ichinose and N. Masuda. Zero-determinant strategies in finitely repeated games. J. Theor. Biol., Vol. 438, pp. 61{77, 2018.</li>
+<li id="Sekiguchi1997JEconTheor" data-key="s">T. Sekiguchi. Efficiency in repeated prisoner's dilemma with private monitoring. J. Econ. Theor., Vol. 76, pp. 345{361, 1997.</li>
+<li id="Hao2015PhysRevE" data-key="t">D. Hao, Z. Rong, and T. Zhou. Extortion under uncertainty:Zero-determinant strategies in noisy games. Phys. Rev. E, Vol. 91, p. 052803, 2015.</li>
+<li id="Boerlijst1997AmMathMonth" data-key="u">M. C. Boerlijst, M. A. Nowak, and K. Sigmund. Equal pay for all prisoners. Am. Math. Month., Vol. 104, pp. 303{305, 1997.</li>
+</ul>
+</body>
+</html>
