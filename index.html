@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Zero-determinant strategies</title>
+<title>Strategies that enforce linear payoff relationships under observation errors in Repeated Prisoner’s Dilemma game</title>
 <script>
 MathJax = {
   tex: {
@@ -28,9 +28,19 @@ MathJax = {
 </script>
 <script type="text/javascript" src="./js/article.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-<h1>観測エラー付き繰り返し囚人のジレンマゲームにおける利得の線形関係を強いる戦略の数理解析</h1>
+<p><font size="5"><b>
+観測エラー付き繰り返し囚人のジレンマゲームにおける利得の線形関係を強いる戦略の数理解析
+</b>
+</font>
+</p>
+<p>Strategies that enforce linear payoff relationships under observation errors in Repeated Prisoner’s Dilemma game</p>
+<p>間宮 安曇<br>静岡大学 大学院総合科学技術研究科 工学専攻 数理システム工学コース</p>
+
+本稿の内容は，２０１９年９月，<i>Journal of Theoretical Biology</i>（理論生物学系の雑誌）で掲載されたものです．詳細は，<a href="https://doi.org/10.1016/j.jtbi.2019.06.009">https://doi.org/10.1016/j.jtbi.2019.06.009</a>をご覧ください．ここでは，この内容を日本語で書いていきます．
+
 <h2>序論</h2>
 <h3>背景</h3>
 
@@ -38,11 +48,11 @@ MathJax = {
 
 
 
-これまでの繰り返し囚人のジレンマゲームの文脈において，2人のプレイヤーの間で，一方のプレイヤーが不当にもう一方のプレイヤーの利得をコントロールしたり，相手よりも常に大きい利得を得るような究極的な戦略はないと思われてきた．しかし，2012年にPressとDysonは，そのような究極的戦略を部分集合として含む<b>ゼロ行列式戦略（Zero-determinant strategy）</b>と呼ばれる戦略を発見した<a href="#Press2012PNAS"></a>．ゼロ行列式戦略とは繰り返し囚人のジレンマゲームにおいて，相手の戦略に関わらず，一方的に自分と相手の利得を直線関係にさせることができる戦略である（ゼロ行列式戦略という名前は，後述するように式\eqref{D_liner_err}の右辺分子の行列式を0にすることに由来する）．さらに，その戦略の一部は相手の利得を一方的に設定したり，相手の戦略に関わらず，相手よりも常に多くの利得を得るようにできる．このゼロ行列式戦略の発見によって，あらゆる社会で必要となる協力行動が促進，維持される仕組みについて，さらなる理解が深まった<a href="#Stewart2012PNAS"></a>, <a href="#Hayes2013AmSci"></a>．
+これまでの繰り返し囚人のジレンマゲームの文脈において，2人のプレイヤーの間で，一方のプレイヤーが不当にもう一方のプレイヤーの利得をコントロールしたり，相手よりも常に大きい利得を得るような究極的な戦略はないと思われてきた．しかし，2012年にPressとDysonは，そのような究極的戦略を部分集合として含む<b>ゼロ行列式戦略（Zero-determinant strategies）</b>と呼ばれる戦略を発見した<a href="#Press2012PNAS"></a>．ゼロ行列式戦略とは繰り返し囚人のジレンマゲームにおいて，相手の戦略に関わらず，一方的に自分と相手の利得を直線関係にさせることができる戦略である（ゼロ行列式戦略という名前は，後述するように式\eqref{D_liner_err}の右辺分子の行列式を0にすることに由来する）．さらに，その戦略の一部は相手の利得を一方的に設定したり，相手の戦略に関わらず，相手よりも常に多くの利得を得るようにできる．このゼロ行列式戦略の発見によって，あらゆる社会で必要となる協力行動が促進，維持される仕組みについて，さらなる理解が深まった<a href="#Stewart2012PNAS"></a>, <a href="#Hayes2013AmSci"></a>．
 <h3>研究目的</h3>
 2012年のゼロ行列式戦略の発見以来，その後の研究によって，戦略の性質について多くの事実が明らかとなってきた<a href="#Adami2013NatComm"></a>, <a href="#Akin2017arxiv"></a>, <a href="#ChenZinger2014JTheorBiol"></a>, <a href="#Hilbe2013PlosOne-zd"></a>, <a href="#Hilbe2013PNAS"></a>, <a href="#Hilbe2015GamesEconBehav"></a>, <a href="#Hilbe2015JTheorBiol"></a>, <a href="#Hilbe2014PNAS-zd"></a>, <a href="#LiuLi2015PhysicaA-zd"></a>, <a href="#Stewart2012PNAS"></a>, <a href="#Szolnoki2014PhysRevE-zd"></a>, <a href="#Szolnoki2014SciRep-zd"></a>, <a href="#WuRong2014PhysRevE-zd"></a>, <a href="#Xu2017PhysRevE-zd"></a>, <a href="#Ichinose2018JTB"></a>が，それらの従来の研究では，他のプレイヤーの行動が完全に観測できるという完全観測（perfect monitoring）の仮定が用いられてきた．しかし現実社会では，他のプレイヤーの行動が完全に観測できない場合（不完全観測：imperfect monitoring）があり<a href="#Sekiguchi1997JEconTheor"></a>，このような状況において相手行動を誤認識してしまうエラー（観測エラー：observation error）を考えることは重要である．
 
-Haoらの研究によって，ゼロ行列式戦略に対する観測エラーの影響が明らかとなってきた<a href="#Hao2015PhysRevE"></a>．彼らは，観測エラー付き繰り返し囚人のジレンマゲームでも，ゼロ行列式戦略が存在することを示した．また，ゼロ行列式戦略の部分戦略であるEqualizer戦略{（この戦略と同等の戦略はEqual playとしてPressとDysonの発見よりも先に見つかっている<a href="#Boerlijst1997AmMathMonth"></a>は，観測エラーありでも存在するが，相手の利得のコントロール能力は，エラー率が上がると下がることを明らかにした．さらには，観測エラーが存在する状況では，相手の利得よりも自分の利得が確実に上回るExtortioner戦略（dominant extortion）は存在せず，それより条件が緩いcontingent extortionのみ存在することが分かった．しかし，観測エラーに対する自分と相手の利得を直線関係にする戦略（ゼロ行列式戦略を含む）の一般的性質についてはあまり知られていない．一方で，ゼロ行列式戦略とは別に無条件戦略（unconditional strategy）も自分と相手の利得が線形になることが知られている<a href="#Ichinose2018JTB"></a>, <a href="#Hilbe2013PlosOne-zd"></a>．そこで，本研究では，繰り返し囚人のジレンマゲームにおける利得の線形関係を強いる戦略に観測エラーがどのような影響を与えるかを解析によって明らかにする．
+Haoらの研究によって，ゼロ行列式戦略に対する観測エラーの影響が明らかとなってきた<a href="#Hao2015PhysRevE"></a>．彼らは，観測エラー付き繰り返し囚人のジレンマゲームでも，ゼロ行列式戦略が存在することを示した．また，ゼロ行列式戦略の部分戦略であるEqualizer戦略（この戦略と同等の戦略はEqual playとしてPressとDysonの発見よりも先に見つかっている<a href="#Boerlijst1997AmMathMonth"></a>は，観測エラーありでも存在するが，相手の利得のコントロール能力は，エラー率が上がると下がることを明らかにした．さらには，観測エラーが存在する状況では，相手の利得よりも自分の利得が確実に上回るExtortioner戦略（dominant extortion）は存在せず，それより条件が緩いcontingent extortionのみ存在することが分かった．しかし，観測エラーに対する自分と相手の利得を直線関係にする戦略（ゼロ行列式戦略を含む）の一般的性質についてはあまり知られていない．一方で，ゼロ行列式戦略とは別に無条件戦略（unconditional strategy）も自分と相手の利得が線形になることが知られている<a href="#Ichinose2018JTB"></a>, <a href="#Hilbe2013PlosOne-zd"></a>．そこで，本研究では，繰り返し囚人のジレンマゲームにおける利得の線形関係を強いる戦略に観測エラーがどのような影響を与えるかを解析によって明らかにする．
 
 <h2>観測エラー付き囚人のジレンマゲーム</h2>
 <h3>繰り返し囚人のジレンマゲーム</h3>
@@ -66,23 +76,22 @@ $p_{\rm 1}$は，前回のゲームで自分が協力（C），相手が協力(C
 $p_{\rm 2}$は，前回のゲームで自分が協力（C），相手が裏切り(D)であったとき，今回のゲームで自分が協力する確率である．
 $p_{\rm 3}$は，前回のゲームで自分が裏切り（D），相手が協力(C)であったとき，今回のゲームで自分が協力する確率である．
 $p_{\rm 4}$は，前回のゲームで自分が裏切り（D），相手が裏切り(D)であったとき，今回のゲームで自分が協力する確率である．
-\begin{itemize}
-  \item 無条件戦略 $\bm p=(r,r,r,r)$ \mbox{}\\前回のゲームの結果にかかわらず，$r$の確率で協力する戦略である．ここで，$0\leq r\leq 1$である．
-\begin{itemize}
- \item ALLD戦略$\bm p=(0,0,0,0)$ \mbox{}\\ 常に裏切る戦略である．前回の結果にかかわらず，常に裏切るので，戦略$\bm p$の要素はすべて$0$となる．
-  \item ALLC戦略 $\bm p=(1,1,1,1)$ \mbox{}\\ 常に協力する戦略である．前回の結果にかかわらず，常に協力するので，戦略$\bm p$の要素はすべて$1$となる．
-  \item RAND戦略$\bm p=(1/2,1/2,1/2,1/2)$ \mbox{}\\ 常に$1/2$の確率で協力か裏切りをとる戦略である．
-\end{itemize}
-  \item WSLS戦略（Pavlov戦略） $\bm p=(1,0,0,1)$ \mbox{}\\ Win-Stay,Lose-Shift戦略の略で，「負け{（利得が低い）}」なら行動を切り替え，「勝ち{（利得が高い）}」なら前と同じ行動をする戦略である．
-  \item TFT戦略 $\bm p=(1,0,1,0)$ \mbox{}\\TFTは，tit-for-tatの略で，しっぺ返しを意味する．
-  前回のゲームで，相手が協力すれば，今回のゲームで協力するので，$p_1=p_3=1$となり，相手が裏切りであった場合は，裏切るので，$p_2=p_4=0$になる．
-  \item ゼロ行列式戦略　\mbox{}\\ 2012年にPress-Dyson発見した戦略である．相手の戦略にかかわらず，相手と自分の利得の期待値に直線関係を強いる戦略である．
-  ゼロ行列式戦略は，部分戦略として，以下の戦略を含む．
-  \begin{itemize}
-  \item Equalizer戦略\mbox{}\\ 相手の戦略にかかわらず，相手の利得を固定する戦略
-  \item Extortioner戦略\mbox{}\\ 相手よりも常に多くの利得を得る戦略
-  \end{itemize}
-\end{itemize}
+<ul>
+  <li>無条件戦略 $\bm p=(r,r,r,r)$ <br>前回のゲームの結果にかかわらず，$r$の確率で協力する戦略である．ここで，$0\leq r\leq 1$である．</li>
+ <ul>
+  <li>ALLD戦略$\bm p=(0,0,0,0)$ <br>常に裏切る戦略である．前回の結果にかかわらず，常に裏切るので，戦略$\bm p$の要素はすべて$0$となる．</li>
+  <li>ALLC戦略 $\bm p=(1,1,1,1)$ <br>常に協力する戦略である．前回の結果にかかわらず，常に協力するので，戦略$\bm p$の要素はすべて$1$となる．</li>
+  <li>RAND戦略$\bm p=(1/2,1/2,1/2,1/2)$ <br>常に$1/2$の確率で協力か裏切りをとる戦略である．</li>
+ </ul>
+  <li>WSLS戦略（Pavlov戦略） $\bm p=(1,0,0,1)$ <br> Win-Stay,Lose-Shift戦略の略で，「負け（利得が低い）」なら行動を切り替え，「勝ち（利得が高い）」なら前と同じ行動をする戦略である．</li>
+  <li>TFT戦略 $\bm p=(1,0,1,0)$<br>TFTは，tit-for-tatの略で，しっぺ返しを意味する．
+  前回のゲームで，相手が協力すれば，今回のゲームで協力するので，$p_1=p_3=1$となり，相手が裏切りであった場合は，裏切るので，$p_2=p_4=0$になる．</li>
+  <li>ゼロ行列式戦略<br>2012年にPress-Dyson発見した戦略である．相手の戦略にかかわらず，相手と自分の利得の期待値に直線関係を強いる戦略である．ゼロ行列式戦略は，部分戦略として，以下の戦略を含む．</li>
+  <ul>
+    <li> Equalizer戦略<br>相手の戦略にかかわらず，相手の利得を固定する戦略</li>
+    <li> Extortioner戦略<br>相手よりも常に多くの利得を得る戦略</li>
+  </ol>
+</ul>
 
 <h3>観測エラー</h3>
 現実では，相手の行動が直接観測できない場合がある．このようなとき，相手が何をやったか全く分からないわけではなく，多くの場合，
@@ -358,7 +367,7 @@ s_Y=\frac{{\bm v} \cdot {\bm S_Y}}{\bm v \cdot \bm1}
   \right|
 \end{split}
 \end{equation}
-式\eqref{D_liner_err}を解析することでプレーヤー$X$と$Y$の利得の関係を{明らかにしていく}．
+式\eqref{D_liner_err}を解析することでプレーヤー$X$と$Y$の利得の関係を明らかにしていく．
 
 \chapter{解析}
 前章で定義した観測エラー付き繰り返し囚人のジレンマゲームにおいて，
@@ -386,7 +395,7 @@ n次正方行列Aに対して，
   s^\prime {\bm v_1}+t^\prime {\bm v_2}+ u^\prime {\bm v_3} +v^\prime {\bm v_4}=\bm 0
 \end{equation}
 また，式\eqref{eq:D2_2}の行列式の4列目の列ベクトル${\bm v_4}$を考えずに，1，2，3列目の列ベクトル${\bm v_1},{\bm v_2},{\bm v_3}$のみで1次従属になる場合もあるが，このとき，$\bm v \cdot \bm 1=D(\bm p,\bm q,\bm 1)=0$となり，式\eqref{eq:sx2}，式\eqref{eq:sy2}，式\eqref{D_liner_err}の分母が$0$となり計算不能になるので考えない．
-%また，$\bm v$の要素はそれぞれ$0$以上の数であり，また$\bm v=0$になることはないので，$\bm v \cdot 1=0$となることは考えない．
+
 よって，$v^\prime\neq0$，$\bm v_4\neq \bm 0$の場合のみを考える．
 $v^\prime\neq0$のとき式\eqref{eq:subordination}について，$s=s^\prime/v^\prime,t=t^\prime/v^\prime,u=u^\prime/v^\prime$とおくと，
 \begin{equation}
@@ -401,7 +410,7 @@ $v^\prime\neq0$のとき式\eqref{eq:subordination}について，$s=s^\prime/v^
 
 $\epsilon=0$かつ$\xi=0$の場合，利得ベクトルは，$\bm{S_X}=(R_E,S_E,T_E,P_E)=(R,S,T,P)$，
 $\bm{S_Y}=(R_E,T_E,S_E,P_E)=(R,T,S,P)$となる．
-さらに，式\eqref{eq:D2_2}は{整理されて}，以下の式になる（文献<a href="#Press2012PNAS}の図2B"></a>）．
+さらに，式\eqref{eq:D2_2}は整理されて，以下の式になる（文献<a href="#Press2012PNAS}の図2B"></a>）．
 \begin{equation}
 \label{eq:D}
   D({\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1}) = 
@@ -636,7 +645,7 @@ $s=u=0$なので，式\eqref{eq:48}より，
     \end{array}
     \right)
 \end{equation}
-となり，連立方程式の形で表すと，Press-Dysonの式と同じ{（文献<a href="#Hilbe2013PlosOne-zd"></a>の式(1)や{文献<a href="#Hilbe2013PNAS"></a>の式(1)）}になり，以下のゼロ行列式戦略が導かれる．
+となり，連立方程式の形で表すと，Press-Dysonの式と同じ（文献<a href="#Hilbe2013PlosOne-zd"></a>の式(1)や文献<a href="#Hilbe2013PNAS"></a>の式(1)）になり，以下のゼロ行列式戦略が導かれる．
 \begin{eqnarray}
 \label{eq:zd}
   \begin{cases}
@@ -716,47 +725,45 @@ $(T,R,P,S)=(1.5,1,0,-0.5)$とした場合のゼロ行列式戦略と無条件戦
 以下の図は，無限回ゲームを繰り返したときのゲーム1回あたりのプレイヤーの利得の期待値の関係を示したものである．
 灰色の線で囲まれた領域は，このゲームにおいて実現可能な利得集合を示す．
 また，図の黒点の集合は，プレーヤー$X$の戦略$\bm p$を1つに決めた上で，
-{プレーヤー$Y$の}戦略$\bm q$を乱数で1,000戦略分生成し，それぞれについてゲームを行った時の利得関係を示す．
+プレーヤー$Y$の戦略$\bm q$を乱数で1,000戦略分生成し，それぞれについてゲームを行った時の利得関係を示す．
 図\ref{wsls}に示すように，WSLS戦略を例として，一般的な戦略は，プレーヤー$X$と$Y$の利得関係が線形とはならない．一方で，ゼロ行列式戦略と無条件戦略では自分と相手の利得関係は線形となる．これを以下に示す．
-
+<figure><img src="./image/figure2.png" width="80%"><figcaption>エラーなしのゲームでの利得の数値例</figcaption></figure>
 
 <h5>ゼロ行列式戦略の$s_X,s_Y$の直線関係の数値例</h5>
-{図\ref{equalizer2}は，プレーヤー$X$の戦略をEqualizer戦略とした場合の数値例である．}Equalizer戦略は，式\eqref{eq:zd}で$\alpha=0$とすれば，
-$s_X$と$s_Y$の関係式は{式}\eqref{linearPayoff}より，$s_Y=-\gamma/\beta$になり相手の利得の期待値を固定できる．
+図\ref{equalizer2}は，プレーヤー$X$の戦略をEqualizer戦略とした場合の数値例である．Equalizer戦略は，式\eqref{eq:zd}で$\alpha=0$とすれば，
+$s_X$と$s_Y$の関係式は式\eqref{linearPayoff}より，$s_Y=-\gamma/\beta$になり相手の利得の期待値を固定できる．
 さらに，式\eqref{eq:zd}で，$\beta=-2/3,\gamma=1/3$とすれば，
 $s_Y=0.5$になり，$s_Y=0.5$とするEqualizer戦略が導かれる．
 このとき，$\bm p=(2/3,1/3,2/3,1/3)$である．図\ref{equalizer2}より，
 $s_Y=0.5$の直線上にすべての黒点があるので，乱数で決めた相手の戦略にかかわらず，相手の利得が一定になっていることがわかる．
 
-{図\ref{extortioner}は，プレーヤー$X$の戦略をExtorioner戦略とした場合の数値例である．}Extorioner戦略は，
-$s_X$と$s_Y$の直線{関係を表す}式\eqref{linearPayoff}が点$(P,P)=(0,0)$を通り，
+図\ref{extortioner}は，プレーヤー$X$の戦略をExtorioner戦略とした場合の数値例である．Extorioner戦略は，
+$s_X$と$s_Y$の直線関係を表す式\eqref{linearPayoff}が点$(P,P)=(0,0)$を通り，
 直線の傾きを$1$より大きくすることによって，相手よりも多くの利得を得ることができる．式\eqref{eq:zd}より，
 $(\alpha,\beta,\gamma)=(0,0.01,-0.15)$と決めれば，
 $\bm p=(0.86,0.77,0.09,0)$が求まり，点$(0,0)$を通り，直線の傾きを$15$とするようなExtortioner戦略が求まる．
 図\ref{extortioner}より，点$(0,0)$を除いて常に相手よりも利得が高くなっていることがわかる．
 
-{図\ref{tft}の}TFT戦略は{Extortioner戦略の傾きが1の特殊例}である．
+図\ref{tft}のTFT戦略はExtortioner戦略の傾きが1の特殊例である．
 式\eqref{eq:zd}の$\alpha=0.5,\beta=-0.5,\gamma=0$とすれば，$\bm p=(1,0,1,0)$が求まりTFT戦略が導かれる．
 $\alpha=0.5,\beta=-0.5,\gamma=0$のとき，直線は点$(P,P)=(0,0)$，$(R,R)=(1,1)$を通り，傾き$1$となる．
 図\ref{tft}より，TFT戦略を採るプレイヤーは，常に相手の利得と同じになっていることがわかる．
-また，戦略$\bm p$が$p_1=1$かつ$p_4=0$かつ$p_3+p_4=1$を満たす場合，直線が点$(P,P)$，$(R,R)$を通り，傾きが$1$となる戦略となり，TFT戦略と全く同じ直線関係になる（付録\ref{appendix_tft1}）．
-
-%\genki{卒論には入れなくて良いのですが、どこかのジャーナルに論文として出すときには直線で傾き1となる戦略の条件を間宮がこの前解析的に出してくれたので、それをここで言及して、詳しくは付録として付け加えるのはどうですかね。たしか$p_1=1, p_4=0$と決まって、$p_2 +p_3=1$という条件でしたよね。それって添付した論文の付録のAppendix A. TFT as a deterministic generous ZD strategy Followingに書いてあることとすごく関係すると思います。私もまだどう関係するかは理解していませんが。間宮もちょっと見てみてください。}
+また，戦略$\bm p$が$p_1=1$かつ$p_4=0$かつ$p_3+p_4=1$を満たす場合，直線が点$(P,P)$，$(R,R)$を通り，傾きが$1$となる戦略となり，TFT戦略と全く同じ直線関係になる（<a href="#appendix_tft1">付録</a>）．
 
 <h5>無条件戦略$\bm p =(r,r,r,r)$のときの$s_X,s_Y$の直線関係の数値例</h5>
 図\ref{alld}は，無条件戦略の1つのALLD戦略の数値例であり，数理解析でも示したように$s_X$と$s_Y$は直線関係になる．
-このとき，{式}\eqref{rrrr_alpha_0}より$\beta=3 \alpha,\gamma=0$と決まるので，
+このとき，式\eqref{rrrr_alpha_0}より$\beta=3 \alpha,\gamma=0$と決まるので，
 $s_X$と$s_Y$の関係式（図\ref{alld}の直線）は，$s_X+3 s_Y=0$となる．
-同様に，{図\ref{allc}は無条件戦略の1つの}ALLC戦略の数値例であり，$s_X$と$s_Y$は直線関係になる．
-このとき，{式}\eqref{rrrr_alpha_0}より$\beta=3  \alpha,\gamma=-4 \alpha$と決まるので，
+同様に，図\ref{allc}は無条件戦略の1つのALLC戦略の数値例であり，$s_X$と$s_Y$は直線関係になる．
+このとき，式\eqref{rrrr_alpha_0}より$\beta=3  \alpha,\gamma=-4 \alpha$と決まるので，
 $s_X$と$s_Y$の関係式（図\ref{allc}の直線）は，$s_X+3 s_Y-4=0$となる．
 これらの結果から，ALLD戦略を採るプレイヤーは，相手以上の利得を常に得られることがわかる．
 また，ALLC戦略を採るプレイヤーは，常に相手以下の利得になることがわかる．
-
+<figure><img src="./image/figure1.png" width="80%"><figcaption>エラーありのゲームでの利得の数値例</figcaption></figure>
 
 <h3>エラーありの場合</h3>
 <h4>数理解析</h4>
-エラーなしの場合と{同様に}解析していく．
+エラーなしの場合と同様に解析していく．
 式\eqref{eq:D2_2}の行列式の各列ベクトルを式\eqref{eq:subordination2}に代入し，それを成分表示すると以下のようになる．
 \begin{equation}
 \label{eq:ff}
@@ -995,8 +1002,8 @@ t
 \end{eqnarray}
 これを
 (1)$s=0$
-(2)$\epsilon-\xi=0${かつ}$1-2 (\epsilon +\xi)=0$
-(3)$p_1 =p_2${かつ}$p_3=p_4$
+(2)$\epsilon-\xi=0$かつ$1-2 (\epsilon +\xi)=0$
+(3)$p_1 =p_2$かつ$p_3=p_4$
 の3通りに場合分けして解く必要がある．
 
 
@@ -1064,7 +1071,7 @@ $s=0,u=0$を式\eqref{eq:17}に代入すると，
     \end{array}
     \right)
 \end{equation}
-連立方程式の形で表すと，{エラーありの場合の}ゼロ行列式戦略であることがわかる<a href="#Hao2015PhysRevE"></a>．
+連立方程式の形で表すと，エラーありの場合のゼロ行列式戦略であることがわかる<a href="#Hao2015PhysRevE"></a>．
 \begin{eqnarray}
 \label{eq:hao}
   \begin{cases}
@@ -1085,7 +1092,7 @@ $s=0,u=0$を式\eqref{eq:17}に代入すると，
 
 
 <h5>(2)$\epsilon-\xi=0$かつ$1-2(\epsilon+\xi)=0 \Leftrightarrow \epsilon=\xi=1/4$のとき</h5>
-$R_E=1/2(R+S),S_E=1/2(R+S), T_E=1/2(T+P), P_E=1/2(T+P)$となり，{$R_E=S_E$，$T_E=P_E$となる．したがって，}繰り返し囚人のジレンマの条件$T_E > R_E > P_E > S_E$の条件を満たさないので考えなくてよい．
+$R_E=1/2(R+S),S_E=1/2(R+S), T_E=1/2(T+P), P_E=1/2(T+P)$となり，$R_E=S_E$，$T_E=P_E$となる．したがって，繰り返し囚人のジレンマの条件$T_E > R_E > P_E > S_E$の条件を満たさないので考えなくてよい．
 
 <h5>(3)$p_1 -p_2=0$かつ$p_3 -p_4=0$のとき</h5>
 このとき，式\eqref{eq:seq}は以下に省略される．
@@ -1168,7 +1175,7 @@ $p_1=p_2=p_3=p_4=-u/s=r $とおき，$u=-s r$を，
 となる．ここで，$\alpha$は任意の実数である．また，$r=-u/s (r\in [0,1])$であるので，$s$の値が決まれば，$u$は自動的に決まる．
 よって，式\eqref{eq:seq1}と式\eqref{eq:17}を満たす$s,t,u,\alpha,\beta,\gamma$が定まるので，観測エラーがある場合でも無条件戦略は相手の戦略に関係なく自分と相手の利得関係を直線にすることができる．
 
-よって，観測エラー付き繰り返し囚人のジレンマゲームにおいて{もエラーなしの場合と同様に}，相手の戦略$\bm q$に関係なく自分と相手の利得を線形関係にさせる戦略は，ゼロ行列式戦略と無条件戦略だけであることが示された．
+よって，観測エラー付き繰り返し囚人のジレンマゲームにおいてもエラーなしの場合と同様に，相手の戦略$\bm q$に関係なく自分と相手の利得を線形関係にさせる戦略は，ゼロ行列式戦略と無条件戦略だけであることが示された．
 
 <h5>無条件戦略を採るプレイヤーの期待利得$s_X$の変域</h5>
 プレイヤー$X$の戦略が無条件戦略$\bm p=(r,r,r,r)$のとき，$s_X$は，付録\ref{ap1}より以下で与えられる．
@@ -1238,7 +1245,7 @@ $(T,R,P,S)=(1.5,1,0,-0.5)$とした場合のゼロ行列式戦略と無条件戦
 それぞれについて，観測エラーなし（エラー率$\epsilon+\xi=0$）の場合で，ゲームを行った時の利得関係を示す．
 さらに，図の青緑点，緑点，薄青緑点の集合は，それぞれエラー率$\epsilon+\xi=0.1,0.2,0.3$とした場合の利得関係を示している．
 また，下図の灰色の線で囲まれた領域は，実現可能な利得集合である．4つの領域が図には書かれているが，外側から順にエラー率$\epsilon+\xi$の値を$0,0.1,0.2,0.3$としたときの領域である．
-%\genki{ここの「$\epsilon+\xi$の値を$0,0.1,0.2,0.3$とした」が分からない。つまり、$\epsilon$は固定で$\xi$だけ動かしたのか、あるいは$\xi$が固定で$\epsilon$だけ動かしたのか。それとも両方同時に動かしたのか。どれなのか明記してください。卒論ではやらなくてよいけど、ジャーナル論文だとその3パターンをやらないといけないでしょうね（うち2パターンは付録とかにつけますが）。}
+
 ここで，エラー率$\epsilon+\xi \geq 1/3$のとき，囚人のジレンマの条件$T_E>R_E>P_E>S_E$を満たさなくなるので，このような高いエラー率は考えない．
 また，赤点や青点はそれぞれ相手がALLD戦略やALLC戦略であった時の利得関係を示す．
 エラーなしの場合の図\ref{wsls}に示したように，WSLS戦略を例として，一般的な戦略は，プレーヤー$X$と$Y$の利得関係が線形とはならなかった．図\ref{wsls_err}に示したように，エラーがある場合でも，同様にプレーヤー$X$と$Y$の利得関係が線形とはならないことがわかる．
@@ -1246,7 +1253,7 @@ $(T,R,P,S)=(1.5,1,0,-0.5)$とした場合のゼロ行列式戦略と無条件戦
 
 <h5>ゼロ行列式戦略の$s_X,s_Y$の直線関係の数値例</h5>
 {図\ref{eq_err}は，プレーヤー$X$の戦略をEqualizer戦略とした場合の数値例である．}Equalizer戦略は，式\eqref{eq:hao}で$\alpha=0$とすれば，
-$s_X$と$s_Y$の関係式は{式}\eqref{linearPayoff}より，$s_Y=-\gamma/\beta$になり相手の利得の期待値を固定できる．
+$s_X$と$s_Y$の関係式は式\eqref{linearPayoff}より，$s_Y=-\gamma/\beta$になり相手の利得の期待値を固定できる．
 エラー率$\epsilon+\xi=0$のとき，エラーなしの場合の数値例でも示したように，式\eqref{eq:hao}で，$\beta=-2/3,\gamma=1/3$とすれば，
 $s_Y=0.5$になり，$s_Y=0.5$のEqualizer戦略が導かれた．このとき，$\bm p=(2/3,1/3,2/3,1/3)$であった．
 同様に，エラー率が$0.1,0.2$のときは$\bm p$を，それぞれ$(0.8,0.365217,0.634783,0.2),(0.99,0.74,0.26,0.01)$とすれば，$s_Y=0.5$に相手の利得が固定される．また，エラー率が$0.3$のときは，有効な$\bm p$が求まらない．
@@ -1322,7 +1329,6 @@ $s_X+1.2 s_Y-1.21=0 \,(-0.05 \leq s_X \leq 0.55)$となる．
 
 <h2>付録</h2>
 <h3>${\bm p}=(r,r,r,r)$のときの$s_X$</h3>
-\label{ap1}
 プレイヤーXが無条件戦略のとき，プレイヤーX の利得の期待値を求める．
 このとき，無条件戦略の$\bm p$は${\bm p} = (r, r, r, r)$なので，式\eqref{eq:D2_2}に代入すると，
 \begin{equation}
@@ -1442,10 +1448,10 @@ s_X&=\frac{{\bm v} \cdot {\bm S_X}}{\bm v \cdot \bm 1} =\frac{ D({\bm p,\bm q,\b
 TFT戦略はエラーなしの場合，相手の戦略にかかわらず，プレイヤー間の利得関係に点$(P,P),(R,R)$を通り傾き$1$の直線関係を強いる．
 しかし，エラーありの場合では，一般的には利得関係に直線関係を強いることができない．これらのことを以下で示す．
 <h4>エラーなしの場合</h4>
-\label{appendix_tft1}
+<a name="appendix_tft1"></a>
 TFT戦略がエラーなしの場合，相手の戦略にかかわらず，プレイヤー間の利得関係に点$(P,P),(R,R)$を通り傾き$1$の直線関係を強いる戦略であることを示す．
 
-式\eqref{eq:zd}は，$\alpha,\beta,\gamma$をそれぞれ$\alpha=\phi s ,\beta=-\phi,\gamma=\phi (1-s)l$とおいたとき，以下のように表される\cite{Hilbe2013PlosOne-zd}．
+式\eqref{eq:zd}は，$\alpha,\beta,\gamma$をそれぞれ$\alpha=\phi s ,\beta=-\phi,\gamma=\phi (1-s)l$とおいたとき，以下のように表される<a href="#Hilbe2013PlosOne-zd"></a>．
 \begin{eqnarray}
 \label{eq:zd-2}
   \begin{cases}
@@ -1518,7 +1524,6 @@ $\alpha+\beta=0$のとき，2行目の方程式を満たすには，$\gamma=0$�
 しかし，この利得条件では，エラーが入ると直線にはならないことがわかる（図\ref{wsls_tft2}の青緑，緑点集合）．ここで，エラー率$\epsilon+\xi=0.3$のとき，$R_E=0.55,S_E=-0.05,T_E=1.4,P_E=0.6$となり，囚人のジレンマゲームの条件$T_E>R_E>P_E>S_E$の条件を満たさないので，このエラー率については考えない．
 
 <h3>$\bm v\cdot \bm  f=D(\bm p,\bm q,\bm f)$の導出</h3>
-\label{eq:Derivation_D}
 観測エラー付き繰り返し囚人のジレンマゲームの遷移行列は式\eqref{eq:M}と書けた．
 $\bm M^\prime \equiv \bm M-\bm I$とすると，$\bm M^\prime$は以下のように書ける．
 \begin{equation}
@@ -2046,26 +2051,26 @@ $Adj(\bm M^\prime)_{ij} $の4行目は以下のように書ける．これらを
 <h2>参考文献</h2>
 <ul class="biblio" data-sort="byKey">
 <li id="MailathSamuelson2006book" data-key="a">J. Mailath and L. Samuelson. Repeated Games and Reputation. Oxford University Press, Oxford, 2006.</li>
-<li id="Press2012PNAS" data-key="b"> W. H. Press and F. J. Dyson. Iterated Prisoner's Dilemma contains strategies that dominate any evolutionary opponent. Proc. Natl. Acad. Sci. USA, Vol. 109, pp. 10409{10413, 2012.}</li>
-<li id="Stewart2012PNAS" data-key="c">A. J. Stewart and J. B. Plotkin. Extortion and cooperation in the Prisoner's Dilemma. Proc. Natl. Acad. Sci. USA, Vol. 109, pp. 10134{10135, 2012.</li>
+<li id="Press2012PNAS" data-key="b"> W. H. Press and F. J. Dyson. Iterated Prisoner's Dilemma contains strategies that dominate any evolutionary opponent. Proc. Natl. Acad. Sci. USA, Vol. 109, pp. 10409-10413, 2012.</li>
+<li id="Stewart2012PNAS" data-key="c">A. J. Stewart and J. B. Plotkin. Extortion and cooperation in the Prisoner's Dilemma. Proc. Natl. Acad. Sci. USA, Vol. 109, pp. 10134-10135, 2012.</li>
 <li id="Hayes2013AmSci" data-key="d">B. Hayes. New dilemmas for the prisoner. Am. Sci., Vol. 100, p. 422, 2013.
 <li id="Adami2013NatComm" data-key="e">C. Adami and A. Hintze. Evolutionary instability of zero-determinant strategies demonstrates that winning is not everything. Nat. Comm., Vol. 4, p. 2193, 2013.</li>
-<li id="Akin2017arxiv" data-key="f">E. Akin. The iterated prisoner's dilemma: good strategies and their dynamics. arXiv,2017.</li>
-<li id="ChenZinger2014JTheorBiol" data-key="g">J. Chen and A. Zinger. The robustness of zero-determinant strategies in Iterated Prisoner's Dilemma games. J. Theor. Biol., Vol. 357, pp. 46{54, 2014.</li>
+<li id="Akin2017arxiv" data-key="f">E. Akin. The iterated prisoner's dilemma: good strategies and their dynamics. arXiv, 2017.</li>
+<li id="ChenZinger2014JTheorBiol" data-key="g">J. Chen and A. Zinger. The robustness of zero-determinant strategies in Iterated Prisoner's Dilemma games. J. Theor. Biol., Vol. 357, pp. 46-54, 2014.</li>
 <li id="Hilbe2013PlosOne-zd" data-key="h">C. Hilbe, M. A. Nowak, and A. Traulsen. Adaptive dynamics of extortion and compliance. PLOS ONE, Vol. 8, p. e77886, 2013.</li>
-<li id="Hilbe2013PNAS" data-key="i">C. Hilbe, M. A. Nowak, and K. Sigmund. Evolution of extortion in Iterated Prisoner's Dilemma games. Proc. Natl. Acad. Sci. USA, Vol. 110, pp. 6913{6918, 2013.</li>
-<li id="Hilbe2015GamesEconBehav" data-key="j">C. Hilbe, A. Traulsen, and K. Sigmund. Partners or rivals? Strategies for the iterated prisoner's dilemma. Games Econ. Behav., Vol. 92, pp. 41{52, 2015.</li>
-<li id="Hilbe2015JTheorBiol" data-key=k">C. Hilbe, B. Wu, A. Traulsen, and M. A. Nowak. Evolutionary performance of zero-determinant strategies in multiplayer games. J. Theor. Biol., Vol. 374, pp. 115{124,2015.</li>
-<li id="Hilbe2014PNAS-zd" data-key="l">C. Hilbe, B. Wu, A. Traulsen, and M. A. Nowak. Cooperation and control in multiplayer social dilemmas. Proc. Natl. Acad. Sci. USA, Vol. 111, pp. 16425{16430,2014.</li>
-<li id="LiuLi2015PhysicaA-zd" data-key="m">J. Liu, Y. Li, C. Xu, and P. M. Hui. Evolutionary behavior of generalized zero-determinant strategies in iterated prisoner's dilemma. Physica A, Vol. 430, pp. 81{92,2015. 24}</li>
+<li id="Hilbe2013PNAS" data-key="i">C. Hilbe, M. A. Nowak, and K. Sigmund. Evolution of extortion in Iterated Prisoner's Dilemma games. Proc. Natl. Acad. Sci. USA, Vol. 110, pp. 6913-6918, 2013.</li>
+<li id="Hilbe2015GamesEconBehav" data-key="j">C. Hilbe, A. Traulsen, and K. Sigmund. Partners or rivals? Strategies for the iterated prisoner's dilemma. Games Econ. Behav., Vol. 92, pp. 41-52, 2015.</li>
+<li id="Hilbe2015JTheorBiol" data-key=k">C. Hilbe, B. Wu, A. Traulsen, and M. A. Nowak. Evolutionary performance of zero-determinant strategies in multiplayer games. J. Theor. Biol., Vol. 374, pp. 115-124, 2015.</li>
+<li id="Hilbe2014PNAS-zd" data-key="l">C. Hilbe, B. Wu, A. Traulsen, and M. A. Nowak. Cooperation and control in multiplayer social dilemmas. Proc. Natl. Acad. Sci. USA, Vol. 111, pp. 16425-16430,2014.</li>
+<li id="LiuLi2015PhysicaA-zd" data-key="m">J. Liu, Y. Li, C. Xu, and P. M. Hui. Evolutionary behavior of generalized zero-determinant strategies in iterated prisoner's dilemma. Physica A, Vol. 430, pp. 81-92,2015. 24</li>
 <li id="Szolnoki2014PhysRevE-zd" data-key="n">A. Szolnoki and M. Perc. Evolution of extortion in structured ppulations. Phys.Rev. E, Vol. 89, No. 2, p. 022804, 2014.</li>
 <li id="Szolnoki2014SciRep-zd" data-key="o">A. Szolnoki and M. Perc. Defection and extortion as unexpected catalysts of uncon-ditional cooperation in structured populations. Sci. Rep., Vol. 4, p. 5496, 2014.</li>
 <li id="WuRong2014PhysRevE-zd" data-key="p">Z. X. Wu and Z. Rong. Boosting cooperation by involving extortion in spatial prisoner's dilemma games. Phys. Rev. E, Vol. 90, p. 062102, 2014.</li>
 <li id="Xu2017PhysRevE-zd" data-key="q">X. Xu, Z. Rong, Z. X. Wu, T. Zhou, and C. K. Tse. Extortion provides alternativeroutes to the evolution of cooperation in structured populations. Phys. Rev. E, Vol. 95,p. 052302, 2017.</li>
-<li id="Ichinose2018JTB" data-key="r">G. Ichinose and N. Masuda. Zero-determinant strategies in finitely repeated games. J. Theor. Biol., Vol. 438, pp. 61{77, 2018.</li>
-<li id="Sekiguchi1997JEconTheor" data-key="s">T. Sekiguchi. Efficiency in repeated prisoner's dilemma with private monitoring. J. Econ. Theor., Vol. 76, pp. 345{361, 1997.</li>
+<li id="Ichinose2018JTB" data-key="r">G. Ichinose and N. Masuda. Zero-determinant strategies in finitely repeated games. J. Theor. Biol., Vol. 438, pp. 61-77, 2018.</li>
+<li id="Sekiguchi1997JEconTheor" data-key="s">T. Sekiguchi. Efficiency in repeated prisoner's dilemma with private monitoring. J. Econ. Theor., Vol. 76, pp. 345-361, 1997.</li>
 <li id="Hao2015PhysRevE" data-key="t">D. Hao, Z. Rong, and T. Zhou. Extortion under uncertainty:Zero-determinant strategies in noisy games. Phys. Rev. E, Vol. 91, p. 052803, 2015.</li>
-<li id="Boerlijst1997AmMathMonth" data-key="u">M. C. Boerlijst, M. A. Nowak, and K. Sigmund. Equal pay for all prisoners. Am. Math. Month., Vol. 104, pp. 303{305, 1997.</li>
+<li id="Boerlijst1997AmMathMonth" data-key="u">M. C. Boerlijst, M. A. Nowak, and K. Sigmund. Equal pay for all prisoners. Am. Math. Month., Vol. 104, pp. 303-305, 1997.</li>
 </ul>
 </body>
 </html>
