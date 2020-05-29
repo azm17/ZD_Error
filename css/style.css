@@ -4,3 +4,28 @@ body {
 	background: #dcd6d9;
 	font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'  
 }
+
+th {
+	font-weight: normal;
+}
+td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+table {
+	background-color: white;
+}
+
+.box{
+  position: relative;
+  left: 30px;
+}
+.theorem{
+  counter-increment: theorem;
+}
+
+.theorem::before{
+  content: "定理 ";
+  font-weight: bold;
+}
