@@ -39,7 +39,7 @@ MathJax = {
 <p>Strategies that enforce linear payoff relationships under observation errors in Repeated Prisoner’s Dilemma game</p>
 <p>間宮 安曇<br>静岡大学 大学院総合科学技術研究科 工学専攻 数理システム工学コース</p>
 
-本稿の内容は，２０１９年９月，<i>Journal of Theoretical Biology</i>（理論生物学系の雑誌）で掲載されたものです．詳細は，<a href="https://doi.org/10.1016/j.jtbi.2019.06.009">https://doi.org/10.1016/j.jtbi.2019.06.009</a>をご覧ください．ここでは，この内容を日本語で書いていきます．
+本稿の内容は，２０１９年９月，<i>Journal of Theoretical Biology</i>（理論生物学系の雑誌）で掲載されたものです．以下の文章は査読前の研究ノートや卒論の内容をほぼそのまま載せているだけなので，誤りを含む場合があります．ご容赦ください．詳しい内容や正確な内容は，<a href="https://doi.org/10.1016/j.jtbi.2019.06.009">https://doi.org/10.1016/j.jtbi.2019.06.009</a>をご覧ください．
 
 <h2>序論</h2>
 <h3>背景</h3>
@@ -273,7 +273,7 @@ Haoらの研究によって，ゼロ行列式戦略に対する観測エラー�
  \end{array}
   \right)
 \end{equation}
-ここで，$\tau=1-2\epsilon-\xi$である．$\bm M$の定常分布$\bm v=(v_1,v_2,v_3,v_4)$は，$\bm {v^T} \bm M=\bm v^T$を満たす．$v_1$は，無限回ゲームを繰り返したときの両プレイヤーが相互協力である比率，$v_2$はプレイヤーXが協力，プレイヤーYが裏切りである比率，$v_3$はプレイヤーXが裏切り，プレイヤーYが協力である比率，$v_4$はプレイヤーXが裏切り，プレイヤーYが裏切りである比率を示す．さらに，$\bm v$と任意のベクトル$\bm f=(f_1,f_2,f_3,f_4)$の内積は，付録<a href="#v_dot_f"></a>より，式\eqref{eq:D_err}で表される<a href="#Hao2015PhysRevE"></a>（エラーなしの場合は，PressとDysonの論文の図2Bに示されている<a href="#Press2012PNAS"></a>）}．
+ここで，$\tau=1-2\epsilon-\xi$である．それぞれの行と列は前回のゲームの結果と次のゲームの状態を意味する．したがって，次のゲームの状態は，$\bm v(t+1)=\bm v(t) \bm M$と計算できる．$\bm M$の定常分布$\bm v=(v_1,v_2,v_3,v_4)$は，$\bm {v^T} \bm M=\bm v^T$を満たす．$v_1$は，無限回ゲームを繰り返したときの両プレイヤーが相互協力である確率，$v_2$はプレイヤーXが協力，プレイヤーYが裏切りである確率，$v_3$はプレイヤーXが裏切り，プレイヤーYが協力である確率，$v_4$はプレイヤーXが裏切り，プレイヤーYが裏切りである確率をとする．さらに，$\bm v$と任意のベクトル$\bm f=(f_1,f_2,f_3,f_4)$の内積は，PressとDysonらの線形代数的な操作（付録<a href="#v_dot_f"></a>）により，式\eqref{eq:D_err}で表される<a href="#Hao2015PhysRevE"></a>（エラーなしの場合は，PressとDysonの論文の図2Bに示されている<a href="#Press2012PNAS"></a>）．
 \begin{equation}
 \label{eq:D_err}
 \begin{split}
@@ -350,18 +350,18 @@ s_Y=\frac{{\bm v} \cdot {\bm S_Y}}{\bm v \cdot \bm1}
 \end{equation}
 式\eqref{D_liner_err}を解析することでプレーヤー$X$と$Y$の利得の関係を明らかにしていく．
 
-\chapter{解析}
+<h2>解析</h2>
 前章で定義した観測エラー付き繰り返し囚人のジレンマゲームにおいて，相手プレイヤーの戦略にかかわらず，自分と相手の利得の期待値の関係を線形にするような戦略をすべて探していく．つまり，以下の関係を強いる戦略を探していく．
 \begin{equation}
 \label{linearPayoff}
 \alpha s_X+\beta s_Y+\gamma =0
 \end{equation}
-式\eqref{D_liner_err}の右辺分子の$D(\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1)=0$となれば，式\eqref{D_liner_err}の右辺が$0$となり，式\eqref{linearPayoff}を満たす．したがって，以下の行列式の定理を用いて，相手の戦略$\bm q$に関係なく，行列式$D(\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1)=0$にさせる戦略${\bm p}$をすべて求めていく．，
+式\eqref{D_liner_err}の右辺分子の$D(\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1)=0$となれば，式\eqref{D_liner_err}の右辺が$0$となり，式\eqref{linearPayoff}を満たす．したがって，以下の行列式の定理を用いて，相手の戦略$\bm q$に関係なく，行列式$D(\bm p,\bm q,\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1)=0$にさせる戦略${\bm p}$をすべて求めていく．
 
-<div class="theorem">
-<p>$n$次正方行列$A$に対して
-$$det(A)=0 \Leftrightarrow Aの列ベクトルは１次従属$$
-が成り立つ．</p>
+<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;width:400px">
+    <div class="theorem">
+    　<p>$n$次正方行列$A$に対して，$$det(A)=0 \Leftrightarrow Aの列ベクトルは１次従属$$が成り立つ．</p>
+    </div>
 </div>
 
 上の定理より，式\eqref{eq:D2_2}の行列式の列ベクトルが1次従属であった場合，式\eqref{eq:D2_2}の行列式の$i$列目の列ベクトルを$\bm v_i$ $（i \in \{1,2,3,4\}）$とすると，以下を満たすような自明でない$s^\prime,t^\prime,u^\prime,v^\prime$が存在する．
@@ -374,7 +374,7 @@ $$det(A)=0 \Leftrightarrow Aの列ベクトルは１次従属$$
 よって，$v^\prime\neq0$，$\bm v_4\neq \bm 0$の場合のみを考える．$v^\prime\neq0$のとき式\eqref{eq:subordination}について，$s=s^\prime/v^\prime,t=t^\prime/v^\prime,u=u^\prime/v^\prime$とおくと，
 \begin{equation}
 \label{eq:subordination2}
-    s {\bm v_1}+t {\bm v_2}+ u {\bm v_3} + {\bm v_4}=\bm 0
+    s {\bm v_1}+t {\bm v_2}+ u {\bm v_3} + v{\bm v_4}=\bm 0
 \end{equation}
 と書ける．したがって，$\bm v_4=\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1 \neq 0$と式\eqref{eq:subordination2}を満たす$s,t,u,\alpha,\beta,\gamma$が存在するとき，自分と相手の利得の期待値の関係が線形になる．
 <h3>エラーなしの場合</h3>
@@ -521,7 +521,7 @@ t
     \end{array}
     \right)=0
 \end{equation}
-つまり，$\bm q$に関係なく，$D({\bm p},{\bm q},{\alpha \bm{S_X}+\beta \bm{S_Y}+\gamma \bm 1})=0$が成り立つには，式\eqref{eq:seq1_0}と式\eqref{eq:48}を同時に満たす$s,t,u,\alpha,\beta,\gamma$が存在する．まず，式\eqref{eq:seq1_0}を(1)$s=0$ (2)$s\neq0$と場合分けして解くと，(1)$s=0,u=0$ (2)$s\neq0,p_1=p_2=p_3=p_4=-u/s$が解となる．次に，これらが式\eqref{eq:48}を満たすか調べる必要がある．
+つまり，$\bm q$に関係なく，$D({\bm p},{\bm q},{\alpha \bm{S_X}+\beta \bm{S_Y}+\gamma \bm 1})=0$が成り立つには，式\eqref{eq:seq1_0}と式\eqref{eq:48}を同時に満たす$s,t,u,v,\alpha,\beta,\gamma$が存在する．まず，式\eqref{eq:seq1_0}を(1)$s=0$ (2)$s\neq0$と場合分けして解くと，(1)$s=0かつu=0$ (2)$s\neq0かつp_1=p_2=p_3=p_4=-u/s$が解となる．次に，これらが式\eqref{eq:48}を満たすか調べる必要がある．
 <h5>(1)$s=0かつu=0$とき</h5>
 このとき，Press-Dysonが発見したゼロ行列式戦略が解となる．それは以下の通りである．$s=u=0$なので，式\eqref{eq:48}より，
 \begin{equation}
@@ -532,7 +532,7 @@ t
      p_3     \\
      p_4
     \end{array}
-    \right)=-v
+    \right)+v
     \left(
     \begin{array}{c}
      \alpha R+\beta R+\gamma \\
@@ -540,37 +540,31 @@ t
      \alpha T+\beta S+\gamma \\
      \alpha P+\beta P+\gamma
     \end{array}
-    \right)
+    \right)=0
 \end{equation}
-両辺を$t(\neq0)$で割り（$t=0$のとき，$\bm v_4 = \alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1=\bm 0$となるので，考える必要はない），$\alpha=-\alpha/t,\beta=-\beta/t,\gamma=-\gamma/t$と置き直すと，
+ここで，$t=0$としたとき，$v=0$または，
+\begin{equation}\label{eq_abg}
+    \left(
+    \begin{array}{c}
+     \alpha R+\beta R+\gamma \\
+     \alpha S+\beta T+\gamma \\
+     \alpha T+\beta S+\gamma \\
+     \alpha P+\beta P+\gamma
+    \end{array}
+    \right)=0
+\end{equation}
+を満たす必要がある．$v=0$としたとき，自明解$(s,t,u,v)=(0,0,0,0)$しか得られない．また，式\eqref{eq_abg}を解くと，自明解$(\alpha,\beta,\gamma)=(0,0,0)$のみが得られる．したがって，$t=0$を考える必要があない．ゆえに，$\alpha=-\alpha/t,\beta=-\beta/t,\gamma=-\gamma/t$と置き直すと，Press-Dysonの式と同じ（文献<a href="#Hilbe2013PlosOne-zd"></a>の式(1)や文献<a href="#Hilbe2013PNAS"></a>の式(1)）になり，以下のゼロ行列式戦略が導かれる．
 \begin{equation}
-    \left(
-    \begin{array}{c}
-     p_1 - 1 \\
-     p_2 - 1 \\
-     p_3     \\
-     p_4
-    \end{array}
-    \right)=
-    \left(
-    \begin{array}{c}
-     \alpha R+\beta R+\gamma \\
-     \alpha S+\beta T+\gamma \\
-     \alpha T+\beta S+\gamma \\
-     \alpha P+\beta P+\gamma
-    \end{array}
-    \right)
-\end{equation}
-となり，連立方程式の形で表すと，Press-Dysonの式と同じ（文献<a href="#Hilbe2013PlosOne-zd"></a>の式(1)や文献<a href="#Hilbe2013PNAS"></a>の式(1)）になり，以下のゼロ行列式戦略が導かれる．
-\begin{eqnarray}
 \label{eq:zd}
-  \begin{cases}
+\begin{split}
     p_1 - 1 &= \alpha R+\beta R+\gamma \\
     p_2 - 1 &= \alpha S+\beta T+\gamma \\
     p_3     &= \alpha T+\beta S+\gamma \\
     p_4     &= \alpha P+\beta P+\gamma
-  \end{cases}
-\end{eqnarray}
+\end{split}
+\end{equation}
+式\eqref{eq:zd}を満たす$\bm p$が存在する場合，式\eqref{eq:subordination2}を満たす自明でない解$s,t,u,v,\alpha,\beta,\gamma$が存在する．したがって，ZD戦略は利得の線形関係を強いる．
+
 <h5>(2)$s\neq0かつp_1=p_2=p_3=p_4=-u/s$のとき</h5>
 このとき，無条件戦略 $\bm p=(r,r,r,r)$<a href="#Ichinose2018JTB"></a><a href="#Hilbe2013PlosOne-zd"></a>が導かれる．さらに，式\eqref{eq:48}を満たす$s,t,u,\alpha,\beta,\gamma$が存在するか調べる．式\eqref{eq:48}に$p_1=p_2=p_3=p_4=r$とおき，$p_1=p_2=p_3=p_4=r$と$u=-s r$を代入すると，
 \begin{equation}
@@ -865,8 +859,7 @@ t
      \mu p_{3}+\eta p_{4} \\
      \eta p_{3}+\mu p_{4}
     \end{array}
-    \right)=
-    -
+    \right)+v
   \left(
     \begin{array}{c}
      \alpha R_E+\beta R_E+\gamma \\
@@ -874,18 +867,10 @@ t
      \alpha T_E+\beta S_E+\gamma \\
      \alpha P_E+\beta P_E+\gamma
     \end{array}
-    \right)
+    \right)=0
 \end{equation}
-となる．両辺を$t$($\neq0$)で割り，$\alpha=-\alpha/t,\beta=-\beta/t,\gamma=-\gamma/t$と置きなおす．（$t=0$のとき，$\bm v_4 =\alpha \bm S_X+\beta \bm S_Y+\gamma \bm 1=\bm 0$となるので，考える必要はない．）
-\begin{equation}
-    \left(
-    \begin{array}{c}
-     \mu p_{1}+\eta p_{2}-1 \\
-     \eta p_{1}+\mu p_{2}-1  \\
-     \mu p_{3}+\eta p_{4} \\
-     \eta p_{3}+\mu p_{4}
-    \end{array}
-    \right)=
+となる．ここで，$t=0$としたとき，$v=0$または，
+\begin{equation}\label{eq_abg2}
     \left(
     \begin{array}{c}
      \alpha R_E+\beta R_E+\gamma \\
@@ -893,19 +878,19 @@ t
      \alpha T_E+\beta S_E+\gamma \\
      \alpha P_E+\beta P_E+\gamma
     \end{array}
-    \right)
+    \right)=0
 \end{equation}
-連立方程式の形で表すと，エラーありの場合のゼロ行列式戦略であることがわかる<a href="#Hao2015PhysRevE"></a>．
-\begin{eqnarray}
+を満たす必要がある．$v=0$としたとき，自明解$(s,t,u,v)=(0,0,0,0)$しか得られない．また，式\eqref{eq_abg2}を解くと，自明解$(\alpha,\beta,\gamma)=(0,0,0)$のみが得られる．したがって，$t=0$を考える必要があない．ゆえに，$\alpha=-\alpha/t,\beta=-\beta/t,\gamma=-\gamma/t$と置き直すと，エラーありの場合のゼロ行列式戦略であることがわかる<a href="#Hao2015PhysRevE"></a>．
+\begin{equation}
 \label{eq:hao}
-  \begin{cases}
+  \begin{split}
     \mu p_{1}+\eta p_{2}-1&= \alpha R_E+\beta R_E+\gamma \\
     \eta p_{1}+\mu p_{2}-1&= \alpha S_E+\beta T_E+\gamma \\
     \mu p_{3}+\eta p_{4}   &= \alpha T_E+\beta S_E+\gamma \\
     \eta p_{3}+\mu p_{4}   &= \alpha P_E+\beta P_E+\gamma \\
-  \end{cases}
-\end{eqnarray}
-
+  \end{split}
+\end{equation}
+式\eqref{eq:hao}を満たす$\bm p$が存在する場合，式\eqref{eq:subordination2}を満たす自明でない解$s,t,u,v,\alpha,\beta,\gamma$が存在する．したがって，ZD戦略は利得の線形関係を強いる．
 
 
 
@@ -976,15 +961,6 @@ $R_E=1/2(R+S),S_E=1/2(R+S), T_E=1/2(T+P), P_E=1/2(T+P)$となり，$R_E=S_E$，$
     \end{array}
     \right)=0
 \end{equation}
-式\eqref{eq:vector_eqn2}連立方程式の形で表すと以下になる．
-\begin{eqnarray}
-  \begin{cases}
-    \alpha R_E+\beta R_E+\gamma +(s+t)(r-1)&= 0  \\
-    \alpha S_E+\beta T_E+\gamma +t(r-1)&= 0  \\
-    \alpha T_E+\beta S_E+\gamma +(s+t)r&= 0  \\
-    \alpha P_E+\beta P_E+\gamma +tr&= 0
-  \end{cases}
-\end{eqnarray}
 これを解くと，
 \begin{equation}
 \label{rrrr_alpha}
@@ -1406,7 +1382,7 @@ TFT戦略がエラーなしの場合，相手の戦略にかかわらず，プ�
  \end{array}
   \right)
 \end{equation}
-また，$\bm v^T \bm M=\bm v^T $より，$ \bm v^T \bm M^\prime=0$を満たす．さらに，クラメルの公式より，$Adj(\bm M^\prime)\bm M^\prime=det(\bm M^\prime) \bm I=0$を満たす．この二つの式より，$Adj(\bm M^\prime)$のすべての行と$\bm v$が平行であることがわかる．このことにより，$\bm v$は，$\bm M^\prime$の要素を使って表すことができる．$Adj(\bm M^\prime)$の$i$行$j$列目の成分は以下で表される．
+また，$\bm v^T \bm M=\bm v^T $より，$ \bm v^T \bm M^\prime=0$を満たす．さらに，クラメルの公式より，$Adj(\bm M^\prime)\bm M^\prime=det(\bm M^\prime) \bm I=0$を満たす．この二つの式より，$Adj(\bm M^\prime)$のすべての行と$\bm v$が比例関係であることがわかる．このことにより，$\bm v$は，$\bm M^\prime$の要素を使って表すことができる．$Adj(\bm M^\prime)$の$i$行$j$列目の成分は以下で表される．
 \begin{equation}
   Adj(\bm M^\prime)_{ij} = (-1)^{i+j}|\bm M_{ji}^\prime|
 \end{equation}
