@@ -364,14 +364,8 @@ s_Y=\frac{{\bm v} \cdot {\bm S_Y}}{\bm v \cdot \bm1}
     </div>
 </div>
 
-上の定理より，式\eqref{eq:D2_2}の行列式の列ベクトルが1次従属であった場合，式\eqref{eq:D2_2}の行列式の$i$列目の列ベクトルを$\bm v_i$ $（i \in \{1,2,3,4\}）$とすると，以下を満たすような自明でない$s^\prime,t^\prime,u^\prime,v^\prime$が存在する．
-\begin{equation}
-\label{eq:subordination}
-  s^\prime {\bm v_1}+t^\prime {\bm v_2}+ u^\prime {\bm v_3} +v^\prime {\bm v_4}=\bm 0
-\end{equation}
-また，式\eqref{eq:D2_2}の行列式の4列目の列ベクトル${\bm v_4}$を考えずに，1，2，3列目の列ベクトル${\bm v_1},{\bm v_2},{\bm v_3}$のみで1次従属になる場合もあるが，このとき，$\bm v \cdot \bm 1=D(\bm p,\bm q,\bm 1)=0$となり，式\eqref{eq:sx2}，式\eqref{eq:sy2}，式\eqref{D_liner_err}の分母が$0$となり計算不能になるので考えない．
+上の定理より，式\eqref{eq:subordination2}の行列式の列ベクトルが1次従属であった場合，式\eqref{eq:D2_2}の行列式の$i$列目の列ベクトルを$\bm v_i$ $（i \in \{1,2,3,4\}）$とすると，以下を満たすような自明でない$s, t, u, v$が存在する．
 
-よって，$v^\prime\neq0$，$\bm v_4\neq \bm 0$の場合のみを考える．$v^\prime\neq0$のとき式\eqref{eq:subordination}について，$s=s^\prime/v^\prime,t=t^\prime/v^\prime,u=u^\prime/v^\prime$とおくと，
 \begin{equation}
 \label{eq:subordination2}
     s {\bm v_1}+t {\bm v_2}+ u {\bm v_3} + v{\bm v_4}=\bm 0
@@ -542,7 +536,11 @@ t
     \end{array}
     \right)=0
 \end{equation}
-ここで，$t=0$としたとき，$v=0$または，
+ここで，$t=0$としたとき，
+\begin{equation}
+v=0
+\end{equation}
+または，
 \begin{equation}\label{eq_abg}
     \left(
     \begin{array}{c}
@@ -566,7 +564,7 @@ t
 式\eqref{eq:zd}を満たす$\bm p$が存在する場合，式\eqref{eq:subordination2}を満たす自明でない解$s,t,u,v,\alpha,\beta,\gamma$が存在する．したがって，ZD戦略は利得の線形関係を強いる．
 
 <h5>(2)$s\neq0かつp_1=p_2=p_3=p_4=-u/s$のとき</h5>
-このとき，無条件戦略 $\bm p=(r,r,r,r)$<a href="#Ichinose2018JTB"></a><a href="#Hilbe2013PlosOne-zd"></a>が導かれる．さらに，式\eqref{eq:48}を満たす$s,t,u,\alpha,\beta,\gamma$が存在するか調べる．式\eqref{eq:48}に$p_1=p_2=p_3=p_4=r$とおき，$p_1=p_2=p_3=p_4=r$と$u=-s r$を代入すると，
+このとき，無条件戦略 $\bm p=(r,r,r,r)$<a href="#Ichinose2018JTB"></a><a href="#Hilbe2013PlosOne-zd"></a>が導かれる．さらに，式\eqref{eq:48}を満たす$s,t,u,v,\alpha,\beta,\gamma$が存在するか調べる．式\eqref{eq:48}に$p_1=p_2=p_3=p_4=r$とおき，$p_1=p_2=p_3=p_4=r$と$u=-s r$を代入すると，
 \begin{equation}
 \label{eq:vector_eqn}
   v\left(
@@ -596,22 +594,13 @@ t
     \end{array}
     \right)=0
 \end{equation}
-式\eqref{eq:vector_eqn}を連立方程式の形で表すと，
-\begin{eqnarray}
-  \begin{cases}
-    \alpha R+\beta R+\gamma + (s+t)(r-1) &=0\\
-    \alpha S+\beta T+\gamma + t(r-1)     &=0\\
-    \alpha T+\beta S+\gamma + (s+t)r     &=0\\
-    \alpha P+\beta P+\gamma + t r        &=0
-  \end{cases}
-\end{eqnarray}
-となる．これを解くと，
+これを解くと，
 \begin{equation}\label{rrrr_alpha_0}
 \begin{split}
 \beta &= \frac{\alpha ((1-r)(T-P)+ r (R - S ))} { (1 - r)(P -S)+ r (T- R)}\nonumber \\
 	\gamma&=\frac{\alpha (S - T) ((-1 + r)^2 P + r (1 -r )(T+S)+ r^2 R)} {(1- r)(P-S) + r (T -R)}\nonumber \\
-	s&=\frac{\alpha (S(-P  - R  + S) + T(P + R  - T))} {(1-r)(P -S)+ r (T - R)}\nonumber \\
-	t&=\frac{\alpha (S(2 P- S + r (- P - R + S)) +T (- 2 P  + T + r (P + R - T)))} {(1-r)(P -S)+ r (T - R)}
+	s&=\frac{v\alpha (S(-P  - R  + S) + T(P + R  - T))} {(1-r)(P -S)+ r (T - R)}\nonumber \\
+	t&=\frac{v\alpha (S(2 P- S + r (- P - R + S)) +T (- 2 P  + T + r (P + R - T)))} {(1-r)(P -S)+ r (T - R)}
 \end{split}
 \end{equation}
 となる．また，式\eqref{rrrr_alpha_0}の$\beta$と$\gamma$の式について，$\alpha = \phi s^\prime,\beta=-\phi ,\gamma=\phi(1-s^\prime)l$とおき，$l,s^\prime,\phi$について解くと，これは文献<a href="#Hilbe2013PlosOne-zd"></a>の式(16)と一致する．
@@ -744,8 +733,7 @@ $(T,R,P,S)=(1.5,1,0,-0.5)$とした場合のゼロ行列式戦略と無条件戦
 \begin{equation}
 \label{eq:17}
 \begin{split}
-t 
-    \left(
+t  \left(
     \begin{array}{c}
      \mu p_{1}+\eta p_{2}-1\\
      \eta p_{1}+\mu p_{2}-1  \\
@@ -753,8 +741,7 @@ t
      \eta p_{3}+\mu p_{4}
     \end{array}
     \right) 
-   +
-    \left(
+   +\left(
     \begin{array}{c}
      -s -u  \\
      0\\
@@ -804,7 +791,7 @@ t
 \label{eq:seq}
   \begin{cases}
     s(\epsilon -\xi)(p_1 - p_2)   &= 0  \\
-    s(\epsilon-\xi)(p_3 - p_4)　&= 0  \\
+    s(\epsilon-\xi)(p_3 - p_4) &= 0  \\
     s(1-3 \epsilon -\xi)(p_1-p_2) &= 0  \\
     s(1-3 \epsilon -\xi)(p_3-p_4)&= 0  \\
     s(\epsilon p_1 +\tau p_2) +u\mu &= 0  \\
@@ -851,8 +838,7 @@ t
 \end{eqnarray}
 よって，式\eqref{eq:20}の連立方程式の解は$u=0$であり，式\eqref{eq:seq}の連立方程式の解は，$s=0,u=0$となる．$s=0,u=0$を式\eqref{eq:17}に代入すると，
 \begin{equation}
- t
-    \left(
+ t \left(
     \begin{array}{c}
      \mu p_{1}+\eta p_{2}-1 \\
      \eta p_{1}+\mu p_{2}-1  \\
@@ -869,7 +855,11 @@ t
     \end{array}
     \right)=0
 \end{equation}
-となる．ここで，$t=0$としたとき，$v=0$または，
+となる．ここで，$t=0$としたとき，
+\begin{equation}
+v=0
+\end{equation}
+または，
 \begin{equation}\label{eq_abg2}
     \left(
     \begin{array}{c}
@@ -967,11 +957,11 @@ $R_E=1/2(R+S),S_E=1/2(R+S), T_E=1/2(T+P), P_E=1/2(T+P)$となり，$R_E=S_E$，$
 \begin{split}
 	\beta &= \frac{\alpha ((1-r)(T_E-P_E)+ r (R_E - S_E ))} { (1 - r)(P_E -S_E)+ r (T_E- R_E)}\\
 	\gamma&=\frac{\alpha (S_E - T_E) ((-1 + r)^2 P_E + r (1 -r )(T_E+S_E)+ r^2 R_E)} {(1- r)(P_E-S_E) + r (T_E -R_E)}\\
-	s&=\frac{\alpha (S_E(-P_E  - R_E  + S_E) + T_E(P_E + R_E  - T_E))} {(1-r)(P_E -S_E)+ r (T_E - R_E)}\\
-	t&=\frac{\alpha (S_E(2 P_E- S_E + r (- P_E - R_E + S_E)) +T_E (- 2 P_E  + T_E + r (P_E + R_E - T_E)))} {(1-r)(P_E -S_E)+ r (T_E - R_E)}
+	s&=\frac{v\alpha (S_E(-P_E  - R_E  + S_E) + T_E(P_E + R_E  - T_E))} {(1-r)(P_E -S_E)+ r (T_E - R_E)}\\
+	t&=\frac{v\alpha (S_E(2 P_E- S_E + r (- P_E - R_E + S_E)) +T_E (- 2 P_E  + T_E + r (P_E + R_E - T_E)))} {(1-r)(P_E -S_E)+ r (T_E - R_E)}
 \end{split}
 \end{equation}
-となる．ここで，$\alpha$は任意の実数である．また，$r=-u/s (r\in [0,1])$であるので，$s$の値が決まれば，$u$は自動的に決まる．よって，式\eqref{eq:seq1}と式\eqref{eq:17}を満たす$s,t,u,\alpha,\beta,\gamma$が定まるので，観測エラーがある場合でも無条件戦略は相手の戦略に関係なく自分と相手の利得関係を直線にすることができる．
+となる．ここで，$\alpha$は任意の実数である．また，$r=-u/s (r\in [0,1])$であるので，$s$の値が決まれば，$u$は自動的に決まる．よって，式\eqref{eq:seq1}と式\eqref{eq:17}を満たす$s,t,u,v,\alpha,\beta,\gamma$が定まるので，観測エラーがある場合でも無条件戦略は相手の戦略に関係なく自分と相手の利得関係を直線にすることができる．
 
 よって，観測エラー付き繰り返し囚人のジレンマゲームにおいてもエラーなしの場合と同様に，相手の戦略$\bm q$に関係なく自分と相手の利得を線形関係にさせる戦略は，ゼロ行列式戦略と無条件戦略だけであることが示された．
 
